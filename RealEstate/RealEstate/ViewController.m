@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "SignUpViewController.h"
+
 
 @interface ViewController ()
+- (IBAction)signupBtn_tapped:(id)sender;
 
 @end
 
@@ -24,4 +27,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)signupBtn_tapped:(id)sender {
+    SignUpViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"SignUpViewController"];
+    [self.navigationController pushViewController:controller animated:YES];
+}
 @end
