@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
 
 @interface HomeViewController : UIViewController
+
+@property (strong, nonatomic) NSString *uid;
+@property (strong, nonatomic) NSString *userType;
 
 @end

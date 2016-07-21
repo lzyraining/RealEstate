@@ -17,6 +17,9 @@
 		03CC4D941D402BDF00A984DD /* SignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC4D931D402BDF00A984DD /* SignUpViewController.m */; };
 		03CC4D971D402C9600A984DD /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC4D961D402C9600A984DD /* HomeViewController.m */; };
 		03CC4D9A1D402CCB00A984DD /* MyPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC4D991D402CCB00A984DD /* MyPostViewController.m */; };
+		03CC4D9D1D4048AF00A984DD /* radio_sel.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4D9B1D4048AF00A984DD /* radio_sel.png */; };
+		03CC4D9E1D4048AF00A984DD /* radio_unsel.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4D9C1D4048AF00A984DD /* radio_unsel.png */; };
+		03CC4DA11D4055C200A984DD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03CC4DA01D4055C200A984DD /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +40,9 @@
 		03CC4D961D402C9600A984DD /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		03CC4D981D402CCB00A984DD /* MyPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyPostViewController.h; sourceTree = "<group>"; };
 		03CC4D991D402CCB00A984DD /* MyPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyPostViewController.m; sourceTree = "<group>"; };
+		03CC4D9B1D4048AF00A984DD /* radio_sel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_sel.png; sourceTree = "<group>"; };
+		03CC4D9C1D4048AF00A984DD /* radio_unsel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radio_unsel.png; sourceTree = "<group>"; };
+		03CC4DA01D4055C200A984DD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03CC4DA11D4055C200A984DD /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +60,7 @@
 		03CC4D691D40147200A984DD = {
 			isa = PBXGroup;
 			children = (
+				03CC4DA01D4055C200A984DD /* MapKit.framework */,
 				03CC4D741D40147200A984DD /* RealEstate */,
 				03CC4D731D40147200A984DD /* Products */,
 			);
@@ -69,6 +77,7 @@
 		03CC4D741D40147200A984DD /* RealEstate */ = {
 			isa = PBXGroup;
 			children = (
+				03CC4D9F1D4048B400A984DD /* images */,
 				03CC4D781D40147200A984DD /* AppDelegate.h */,
 				03CC4D791D40147200A984DD /* AppDelegate.m */,
 				03CC4D951D402C9600A984DD /* HomeViewController.h */,
@@ -119,6 +128,15 @@
 				03CC4D931D402BDF00A984DD /* SignUpViewController.m */,
 			);
 			name = "Login + SignUp";
+			sourceTree = "<group>";
+		};
+		03CC4D9F1D4048B400A984DD /* images */ = {
+			isa = PBXGroup;
+			children = (
+				03CC4D9B1D4048AF00A984DD /* radio_sel.png */,
+				03CC4D9C1D4048AF00A984DD /* radio_unsel.png */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +199,8 @@
 			files = (
 				03CC4D881D40147200A984DD /* LaunchScreen.storyboard in Resources */,
 				03CC4D851D40147200A984DD /* Assets.xcassets in Resources */,
+				03CC4D9E1D4048AF00A984DD /* radio_unsel.png in Resources */,
+				03CC4D9D1D4048AF00A984DD /* radio_sel.png in Resources */,
 				03CC4D801D40147200A984DD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
