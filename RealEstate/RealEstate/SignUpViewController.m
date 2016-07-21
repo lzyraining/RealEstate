@@ -91,10 +91,11 @@
     if (textField == _dobTF) {
         //[_dobTF resignFirstResponder];
         [self.dobSubView setHidden:NO];
+        [textField resignFirstResponder];
     }else{
         [self.dobSubView setHidden:YES];
     }
-
+    
 };           // became first responder
 
 - (void)didReceiveMemoryWarning {

@@ -20,8 +20,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sp.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="JtA-ih-UYK">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="real_estate.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Nce-he-LZ3">
-                                <rect key="frame" x="123" y="154" width="129" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="real_estate.png" translatesAutoresizingMaskIntoConstraints="NO" id="Nce-he-LZ3">
+                                <rect key="frame" x="129" y="189" width="129" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="I5K-76-HiT"/>
                                     <constraint firstAttribute="width" constant="129" id="Xzi-rK-4rm"/>
@@ -30,12 +30,12 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Nce-he-LZ3" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="134" id="0cn-YI-nID"/>
+                            <constraint firstItem="Nce-he-LZ3" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="169" id="0cn-YI-nID"/>
                             <constraint firstItem="JtA-ih-UYK" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="HgU-Wv-u70"/>
                             <constraint firstItem="JtA-ih-UYK" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="SSG-wK-PjF"/>
-                            <constraint firstAttribute="trailing" secondItem="Nce-he-LZ3" secondAttribute="trailing" constant="123" id="Sbu-en-MR9"/>
+                            <constraint firstAttribute="trailing" secondItem="Nce-he-LZ3" secondAttribute="trailing" constant="117" id="Sbu-en-MR9"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="JtA-ih-UYK" secondAttribute="bottom" id="f8z-TK-SGt"/>
-                            <constraint firstItem="Nce-he-LZ3" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="123" id="mAW-Ya-bKl"/>
+                            <constraint firstItem="Nce-he-LZ3" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="129" id="mAW-Ya-bKl"/>
                             <constraint firstAttribute="trailing" secondItem="JtA-ih-UYK" secondAttribute="trailing" id="xBB-hx-KPB"/>
                         </constraints>
                     </view>
@@ -47,7 +47,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="real_estate.jpg" width="575" height="550"/>
+        <image name="real_estate.png" width="547" height="524"/>
         <image name="sp.jpg" width="640" height="1136"/>
     </resources>
 </document>

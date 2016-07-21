@@ -93,11 +93,13 @@
     }
     else {
         _diplayLbl.text = @"List";
-        [UIView transitionFromView:_myTableView
-                            toView:_myMapView
-                          duration:1.0
-                           options:UIViewAnimationOptionTransitionFlipFromLeft
-                        completion:nil];
+        [UIView transitionWithView:self.presentView
+                          duration:1
+                           options:UIViewAnimationOptionTransitionFlipFromRight
+                        animations:^{
+                            [self.myTableView removeFromSuperview];
+                            [self.presentView addSubview:self.myMapView];
+                        } completion:nil];
         
     }
 }
