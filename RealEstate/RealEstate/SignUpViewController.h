@@ -10,4 +10,6 @@
 
 @interface SignUpViewController : UIViewController
 
+@property(nonatomic, strong) NSString *userType;
+
 @end
