@@ -134,9 +134,21 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BQV-nP-H2Y">
-                                <rect key="frame" x="20" y="75" width="335" height="513"/>
+                                <rect key="frame" x="0.0" y="106" width="375" height="510"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3433433" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4YG-Ef-Lb7">
+                                <rect key="frame" x="20" y="63" width="242" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="lFO-ho-SnI" id="Bxw-f1-ZsK"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jng-iZ-87a">
+                                <rect key="frame" x="320" y="63" width="35" height="30"/>
+                                <state key="normal" title="Filter"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -145,6 +157,7 @@
                         <outlet property="diplayLbl" destination="Vo7-m5-oQR" id="bPp-43-ajQ"/>
                         <outlet property="myPostBtn" destination="Qdp-kt-66R" id="Bg7-M7-zsF"/>
                         <outlet property="presentView" destination="BQV-nP-H2Y" id="B9x-rO-3lU"/>
+                        <outlet property="zipCodeTextField" destination="4YG-Ef-Lb7" id="gas-cN-bvU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ji-id-O0T" userLabel="First Responder" sceneMemberID="firstResponder"/>

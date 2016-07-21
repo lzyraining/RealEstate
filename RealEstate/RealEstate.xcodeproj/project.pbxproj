@@ -24,6 +24,9 @@
 		03CC4DAE1D406D3900A984DD /* MyMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4DAD1D406D3900A984DD /* MyMapView.xib */; };
 		03CC4DB11D406DB400A984DD /* MyTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC4DB01D406DB400A984DD /* MyTableView.m */; };
 		03CC4DB31D406DE900A984DD /* MyTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4DB21D406DE900A984DD /* MyTableView.xib */; };
+		03CC4DB81D40795A00A984DD /* MyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC4DB61D40795A00A984DD /* MyTableViewCell.m */; };
+		03CC4DB91D40795A00A984DD /* MyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4DB71D40795A00A984DD /* MyTableViewCell.xib */; };
+		03CC4DBB1D408B9B00A984DD /* photo_na.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4DBA1D408B9B00A984DD /* photo_na.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +56,10 @@
 		03CC4DAF1D406DB400A984DD /* MyTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableView.h; sourceTree = "<group>"; };
 		03CC4DB01D406DB400A984DD /* MyTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableView.m; sourceTree = "<group>"; };
 		03CC4DB21D406DE900A984DD /* MyTableView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTableView.xib; sourceTree = "<group>"; };
+		03CC4DB51D40795A00A984DD /* MyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableViewCell.h; sourceTree = "<group>"; };
+		03CC4DB61D40795A00A984DD /* MyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableViewCell.m; sourceTree = "<group>"; };
+		03CC4DB71D40795A00A984DD /* MyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTableViewCell.xib; sourceTree = "<group>"; };
+		03CC4DBA1D408B9B00A984DD /* photo_na.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = photo_na.jpg; path = ../../../../Desktop/IOS_example/Week7/FoodPlaner/FoodPlaner/photo_na.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +149,7 @@
 		03CC4D9F1D4048B400A984DD /* images */ = {
 			isa = PBXGroup;
 			children = (
+				03CC4DBA1D408B9B00A984DD /* photo_na.jpg */,
 				03CC4D9B1D4048AF00A984DD /* radio_sel.png */,
 				03CC4D9C1D4048AF00A984DD /* radio_unsel.png */,
 			);
@@ -159,6 +167,9 @@
 				03CC4DAF1D406DB400A984DD /* MyTableView.h */,
 				03CC4DB01D406DB400A984DD /* MyTableView.m */,
 				03CC4DB21D406DE900A984DD /* MyTableView.xib */,
+				03CC4DB51D40795A00A984DD /* MyTableViewCell.h */,
+				03CC4DB61D40795A00A984DD /* MyTableViewCell.m */,
+				03CC4DB71D40795A00A984DD /* MyTableViewCell.xib */,
 			);
 			name = HomeViewController;
 			sourceTree = "<group>";
@@ -225,7 +236,9 @@
 				03CC4D851D40147200A984DD /* Assets.xcassets in Resources */,
 				03CC4D9E1D4048AF00A984DD /* radio_unsel.png in Resources */,
 				03CC4DAE1D406D3900A984DD /* MyMapView.xib in Resources */,
+				03CC4DBB1D408B9B00A984DD /* photo_na.jpg in Resources */,
 				03CC4DB31D406DE900A984DD /* MyTableView.xib in Resources */,
+				03CC4DB91D40795A00A984DD /* MyTableViewCell.xib in Resources */,
 				03CC4D9D1D4048AF00A984DD /* radio_sel.png in Resources */,
 				03CC4D801D40147200A984DD /* Main.storyboard in Resources */,
 			);
@@ -247,6 +260,7 @@
 				03CC4D771D40147200A984DD /* main.m in Sources */,
 				03CC4D971D402C9600A984DD /* HomeViewController.m in Sources */,
 				03CC4DB11D406DB400A984DD /* MyTableView.m in Sources */,
+				03CC4DB81D40795A00A984DD /* MyTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

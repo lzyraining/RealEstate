@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyTableViewCell.h"
 
-@interface MyTableView : UIView
-@property (weak, nonatomic) IBOutlet UILabel *myLbl;
+
+@interface MyTableView : UIView 
+
+@property (weak, nonatomic) IBOutlet UITableView *tbView;
 
 @end
