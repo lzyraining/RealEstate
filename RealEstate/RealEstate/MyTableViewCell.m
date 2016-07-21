@@ -21,4 +21,15 @@
     // Configure the view for the selected state
 }
 
+- (IBAction)likeBtn_tapped:(id)sender {
+    
+    _likeBtn.selected = !_likeBtn.selected;
+    if (_likeBtn.selected) {
+        [self.delegate heartProperty:_likeBtn.tag like:YES];
+    }
+    else {
+        [self.delegate heartProperty:_likeBtn.tag like:NO];
+    }
+    
+}
 @end

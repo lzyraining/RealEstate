@@ -10,14 +10,15 @@
 #import "MyPostViewController.h"
 #import "MyMapView.h"
 #import "MyTableView.h"
-
+#import "MyFavoriteViewController.h"
+#import "AppDelegate.h"
 
 @interface HomeViewController ()
 
 @property (weak, nonatomic) IBOutlet UIButton *myPostBtn;
 - (IBAction)myPostBtn_tapped:(id)sender;
 - (IBAction)signOutBtn_tapped:(id)sender;
-@property (weak, nonatomic) IBOutlet UILabel *diplayLbl;
+@property (weak, nonatomic) IBOutlet UIButton *displayBtn;
 
 @property (strong, nonatomic) IBOutlet UIView *presentView;
 @property (strong, nonatomic) MyMapView *myMapView;
@@ -26,8 +27,13 @@
 
 - (IBAction)displayBtn_tapped:(id)sender;
 
+- (IBAction)myFavoriteBtn_tapped:(id)sender;
 
 @property (strong, nonatomic) NSArray *propertListDataArray;
+@property (strong, nonatomic) NSMutableArray *propertyListPresentArray;
+@property (strong, nonatomic) NSMutableArray *myFavoriteArray;
+
+@property (strong, nonatomic) AppDelegate *appdelegate;
 
 @end
 
@@ -38,6 +44,12 @@
     // Do any additional setup after loading the view.
     
     _propertListDataArray = [[NSArray alloc] init];
+    _propertyListPresentArray = [[NSMutableArray alloc] init];
+    _myFavoriteArray = [[NSMutableArray alloc] init];
+
+    _appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    [self fetchMyFavoriteListFromCoreData];
+    
     
     NSUserDefaults *userDefault = [[NSUserDefaults alloc] init];
     _uid = [userDefault valueForKey:@"kUid"];
@@ -54,6 +66,25 @@
     self.myTableView.frame = CGRectMake(0, 0, self.presentView.frame.size.width, self.presentView.frame.size.height);
     [self.presentView addSubview:_myMapView];
 }
+
+-(void)fetchMyFavoriteListFromCoreData {
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Property" inManagedObjectContext:_appdelegate.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+    dispatch_sync(queue, ^{
+        NSError *error;
+        NSArray *fetchedArray = [_appdelegate.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+        for (Property *property in fetchedArray) {
+            if ([property.myUserId isEqualToString:_uid]) {
+                [_myFavoriteArray addObject:property];
+            }
+        }
+    });
+}
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -79,8 +110,8 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)displayBtn_tapped:(id)sender {
-    if ([_diplayLbl.text isEqualToString:@"List"]) {
-        _diplayLbl.text = @"Map";
+    _displayBtn.selected = !_displayBtn.selected;
+    if (_displayBtn.selected) {
         [UIView transitionWithView:self.presentView
                           duration:1
                            options:UIViewAnimationOptionTransitionFlipFromLeft
@@ -92,7 +123,6 @@
 
     }
     else {
-        _diplayLbl.text = @"List";
         [UIView transitionWithView:self.presentView
                           duration:1
                            options:UIViewAnimationOptionTransitionFlipFromRight
@@ -104,22 +134,35 @@
     }
 }
 
+- (IBAction)myFavoriteBtn_tapped:(id)sender {
+    MyFavoriteViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"MyFavoriteViewController"];
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
 #pragma mark- TableView Delegate Controller
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [_propertListDataArray count];
+    return [_propertyListPresentArray count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellIdentifier = @"myTableCell";
     MyTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
-    NSDictionary *dict = [_propertListDataArray objectAtIndex:indexPath.row];
+    NSDictionary *dict = [_propertyListPresentArray objectAtIndex:indexPath.row];
     
-    cell.nameLbl.text = [dict valueForKey:@"Property Name"];
-    cell.address1Lbl.text = [dict valueForKey:@"Property Address1"];
-    cell.address2Lbl.text = [dict valueForKey:@"Property Address2"];
+    NSString *propertCategory = [dict valueForKey:@"Property Category"];
+    if ([propertCategory isEqualToString:@"1"]) {
+        cell.propertyCateLbl.text = @"FOR RENT";
+        cell.costLbl.text = [NSString stringWithFormat:@"$%@/mon",[dict valueForKey:@"Property Cost"]];
+    }
+    else {
+        cell.propertyCateLbl.text = @"FOR SALE";
+        cell.costLbl.text = [NSString stringWithFormat:@"$%@",[dict valueForKey:@"Property Cost"]];
+    }
+    
+    cell.addressLbl.text = [NSString stringWithFormat:@"%@, %@",[dict valueForKey:@"Property Address1"],[dict valueForKey:@"Property Address2"]];
     
     NSString *img = [dict valueForKey:@"Property Image 1"];
     if (![img length]) {
-        cell.imgView.image = [UIImage imageNamed:@"photo_na.jpg"];
+        cell.imgView.image = [UIImage imageNamed:@"photo_not_ava.jpg"];
     }
     else {
         NSString *str = @"";
@@ -129,7 +172,18 @@
         NSData *data = [NSData dataWithContentsOfURL:imgUrl];
         cell.imgView.image = [UIImage imageWithData:data];
     }
-
+    BOOL like = NO;
+    for (Property *property in _myFavoriteArray) {
+        if ([property.iD isEqualToString:[dict valueForKey:@"Property Id"]]) {
+            like = YES;
+        }
+    }
+    if (like) {
+        cell.likeBtn.selected = YES;
+    }
+    
+    cell.likeBtn.tag = indexPath.row;
+    cell.delegate = self;
     
     return cell;
 }
@@ -138,6 +192,50 @@
 {
     return 200;
 }
+
+-(void)heartProperty:(NSInteger)index like:(BOOL)like {
+    if (like) {
+        NSDictionary *propertyDict = [_propertyListPresentArray objectAtIndex:index];
+        Property *property = (Property*)[NSEntityDescription insertNewObjectForEntityForName:@"Property" inManagedObjectContext:_appdelegate.managedObjectContext];
+        property.myUserId = _uid;
+        property.iD = [propertyDict valueForKey:@"Property Id"];
+        property.name = [propertyDict valueForKey:@"Property Name"];
+        property.type = [propertyDict valueForKey:@"Property Type"];
+        property.category = [propertyDict valueForKey:@"Property Category"];
+        property.address1 = [propertyDict valueForKey:@"Property Address1"];
+        property.address2 = [propertyDict valueForKey:@"Property Address2"];
+        property.zipCode = [propertyDict valueForKey:@"Property Zip"];
+        property.cost = [propertyDict valueForKey:@"Property Cost"];
+        property.size = [propertyDict valueForKey:@"Property Size"];
+        property.descri = [propertyDict valueForKey:@"Property Desc"];
+        property.sellerUid = [propertyDict valueForKey:@"User Id"];
+        property.latitude = [propertyDict valueForKey:@"Property Latitude"];
+        property.longitutde = [propertyDict valueForKey:@"Property Longitude"];
+        property.imagePath = [propertyDict valueForKey:@"Property Image 1"];
+        
+        NSError *insertError;
+        if (![_appdelegate.managedObjectContext save:&insertError]) {
+            NSLog(@"Insert Data error, %@",[insertError description]);
+        }
+    }
+    else {
+        NSDictionary *propertyDict = [_propertyListPresentArray objectAtIndex:index];
+        
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+        dispatch_sync(queue, ^{
+            for (Property *property in _myFavoriteArray) {
+                if ([property.iD isEqualToString:[propertyDict valueForKey:@"Property Id"]]) {
+                    [_appdelegate.managedObjectContext deleteObject:property];
+                }
+            }
+            NSError *deleteError;
+            if (![_appdelegate.managedObjectContext save:&deleteError]) {
+                NSLog(@"Delete Data Error %@", [deleteError description]);
+            }
+        });
+    }
+}
+
 
 #pragma mark- TextField Delegate Method
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -157,6 +255,8 @@
             id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
             dispatch_sync(dispatch_get_main_queue(), ^{
                 _propertListDataArray = json;
+                _propertyListPresentArray = [NSMutableArray arrayWithArray:_propertListDataArray];
+                [self fetchMyFavoriteListFromCoreData];
                 [self.myTableView.tbView reloadData];
             });
         }
