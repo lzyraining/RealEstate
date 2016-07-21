@@ -28,16 +28,12 @@
 		03CC4DB91D40795A00A984DD /* MyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4DB71D40795A00A984DD /* MyTableViewCell.xib */; };
 		03CC4DC51D41070400A984DD /* sp.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4DC41D41070400A984DD /* sp.jpg */; };
 		03CC4DC71D41111E00A984DD /* real_estate.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4DC61D41111E00A984DD /* real_estate.png */; };
-<<<<<<< HEAD
-		3083678C1D41471F0024767C /* NewPropertyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3083678B1D41471F0024767C /* NewPropertyViewController.m */; };
-=======
 		03CC4DC91D41187400A984DD /* photo_not_ava.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4DC81D41187400A984DD /* photo_not_ava.jpg */; };
 		03CC4DCC1D411F1900A984DD /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4DCA1D411F1900A984DD /* heart.png */; };
 		03CC4DCD1D411F1900A984DD /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4DCB1D411F1900A984DD /* like.png */; };
 		03CC4DD01D41222000A984DD /* MyFavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC4DCF1D41222000A984DD /* MyFavoriteViewController.m */; };
 		03CC4DD61D41262000A984DD /* Property+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC4DD31D41262000A984DD /* Property+CoreDataProperties.m */; };
 		03CC4DD71D41262000A984DD /* Property.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC4DD51D41262000A984DD /* Property.m */; };
->>>>>>> origin/master
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,10 +68,6 @@
 		03CC4DB71D40795A00A984DD /* MyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyTableViewCell.xib; sourceTree = "<group>"; };
 		03CC4DC41D41070400A984DD /* sp.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sp.jpg; sourceTree = "<group>"; };
 		03CC4DC61D41111E00A984DD /* real_estate.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = real_estate.png; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		3083678A1D41471F0024767C /* NewPropertyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPropertyViewController.h; sourceTree = "<group>"; };
-		3083678B1D41471F0024767C /* NewPropertyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPropertyViewController.m; sourceTree = "<group>"; };
-=======
 		03CC4DC81D41187400A984DD /* photo_not_ava.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = photo_not_ava.jpg; sourceTree = "<group>"; };
 		03CC4DCA1D411F1900A984DD /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
 		03CC4DCB1D411F1900A984DD /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
@@ -85,7 +77,6 @@
 		03CC4DD31D41262000A984DD /* Property+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Property+CoreDataProperties.m"; sourceTree = "<group>"; };
 		03CC4DD41D41262000A984DD /* Property.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Property.h; sourceTree = "<group>"; };
 		03CC4DD51D41262000A984DD /* Property.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Property.m; sourceTree = "<group>"; };
->>>>>>> origin/master
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,8 +143,6 @@
 			children = (
 				03CC4D981D402CCB00A984DD /* MyPostViewController.h */,
 				03CC4D991D402CCB00A984DD /* MyPostViewController.m */,
-				3083678A1D41471F0024767C /* NewPropertyViewController.h */,
-				3083678B1D41471F0024767C /* NewPropertyViewController.m */,
 			);
 			name = Seller;
 			sourceTree = "<group>";
@@ -306,7 +295,6 @@
 				03CC4D941D402BDF00A984DD /* SignUpViewController.m in Sources */,
 				03CC4D9A1D402CCB00A984DD /* MyPostViewController.m in Sources */,
 				03CC4D831D40147200A984DD /* RealEstate.xcdatamodeld in Sources */,
-				3083678C1D41471F0024767C /* NewPropertyViewController.m in Sources */,
 				03CC4D7A1D40147200A984DD /* AppDelegate.m in Sources */,
 				03CC4DAC1D406D1400A984DD /* MyMapView.m in Sources */,
 				03CC4D771D40147200A984DD /* main.m in Sources */,

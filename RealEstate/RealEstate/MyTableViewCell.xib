@@ -17,33 +17,64 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HgE-0X-64g">
                         <rect key="frame" x="0.0" y="0.0" width="379" height="199"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Vr-M8-r85">
-                        <rect key="frame" x="17" y="97" width="261" height="32"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Vr-M8-r85">
+                        <rect key="frame" x="17" y="119" width="131" height="32"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Name">
+                                <attributes>
+                                    <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <font key="NSFont" size="14" name="Arial-BoldMT"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMO-A6-Vrb">
-                        <rect key="frame" x="17" y="149" width="339" height="32"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bMO-A6-Vrb">
+                        <rect key="frame" x="17" y="159" width="343" height="32"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Address2">
+                                <attributes>
+                                    <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <font key="NSFont" size="14" name="ArialMT"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Address1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apH-f7-GVT">
-                        <rect key="frame" x="17" y="124" width="339" height="32"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="apH-f7-GVT">
+                        <rect key="frame" x="17" y="136" width="140" height="32"/>
+                        <attributedString key="attributedText">
+                            <fragment content="Price">
+                                <attributes>
+                                    <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <font key="NSFont" size="19" name="Arial-BoldMT"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WfE-yk-IY2">
+                        <rect key="frame" x="332" y="23" width="28" height="28"/>
+                        <state key="normal" backgroundImage="heart.png"/>
+                        <state key="selected" backgroundImage="like.png"/>
+                        <connections>
+                            <action selector="likeBtn_tapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="f1X-I8-cGV"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <connections>
-                <outlet property="address1Lbl" destination="apH-f7-GVT" id="Vgp-7s-uOj"/>
-                <outlet property="address2Lbl" destination="bMO-A6-Vrb" id="riA-Mz-R6j"/>
+                <outlet property="addressLbl" destination="bMO-A6-Vrb" id="bZF-bs-dLB"/>
+                <outlet property="costLbl" destination="apH-f7-GVT" id="MWw-xv-G1r"/>
                 <outlet property="imgView" destination="HgE-0X-64g" id="Fr5-bd-1Tv"/>
-                <outlet property="nameLbl" destination="0Vr-M8-r85" id="8g7-T9-YJz"/>
+                <outlet property="likeBtn" destination="WfE-yk-IY2" id="udl-0d-os1"/>
+                <outlet property="propertyCateLbl" destination="0Vr-M8-r85" id="Wlj-or-EEK"/>
             </connections>
-            <point key="canvasLocation" x="191.5" y="438"/>
+            <point key="canvasLocation" x="250.5" y="440"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="heart.png" width="32" height="32"/>
+        <image name="like.png" width="32" height="32"/>
+    </resources>
 </document>

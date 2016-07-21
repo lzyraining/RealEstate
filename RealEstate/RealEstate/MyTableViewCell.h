@@ -8,10 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MyTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *nameLbl;
-@property (weak, nonatomic) IBOutlet UILabel *address1Lbl;
-@property (weak, nonatomic) IBOutlet UILabel *address2Lbl;
-@property (weak, nonatomic) IBOutlet UIImageView *imgView;
+@protocol HeartPropertyProtocol <NSObject>
 
+-(void)heartProperty: (NSInteger) index like: (BOOL) like;
+
+@end
+
+@interface MyTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *propertyCateLbl;
+@property (weak, nonatomic) IBOutlet UILabel *costLbl;
+@property (weak, nonatomic) IBOutlet UILabel *addressLbl;
+@property (weak, nonatomic) IBOutlet UIImageView *imgView;
+@property (weak, nonatomic) IBOutlet UIButton *likeBtn;
+- (IBAction)likeBtn_tapped:(id)sender;
+
+@property (strong, nonatomic) id<HeartPropertyProtocol>delegate;
 @end

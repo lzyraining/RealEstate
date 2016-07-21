@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MyTableViewCell.h"
 
-
-@interface HomeViewController : UIViewController
+@interface HomeViewController : UIViewController <HeartPropertyProtocol> 
 
 @property (strong, nonatomic) NSString *uid;
 @property (strong, nonatomic) NSString *userType;

@@ -10,12 +10,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RealEstate/SignUpViewController.m"
-            timestampString = "490813804.391146"
+            timestampString = "490785049.913143"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "-textFieldDidBeginEditing:"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "-textFieldDidEndEditing:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
