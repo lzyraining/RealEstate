@@ -34,6 +34,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *emailAlertLbl;
 @property (weak, nonatomic) IBOutlet UILabel *pswdAlertLbl;
 @property (weak, nonatomic) IBOutlet UILabel *rePswdAlertLbl;
+- (IBAction)cancelBtn_Tapped:(UIButton *)sender;
 
 @end
 
@@ -48,54 +49,171 @@
     [_emailAlertLbl setHidden:YES];
     [_pswdAlertLbl setHidden:YES];
     [_rePswdAlertLbl setHidden:YES];
-    [_userNameTF becomeFirstResponder];
 }
 
 #pragma -mark UITextFieldDelegate methods
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+- (void)textFieldDidBeginEditing:(UITextField *)textField{
 
-//    if (textField == _addr1TF || textField == _addr2TF || textField == _mobileTF) {
-//        [self animatedTextField:textField UP:NO];
-//    }
-    CGRect frame = self.view.frame;
-    frame.origin.x = 0; // new x coordinate
-    frame.origin.y = 0; // new y coordinate
-    self.view.frame = frame;
+    // default textField style
+    UIColor *borderColor = [UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1.0];
+    _userNameTF.layer.borderColor = borderColor.CGColor;
+    _userNameTF.layer.borderWidth = 1.0;
+    _userNameTF.layer.cornerRadius = 5.0;
     
-    [textField resignFirstResponder];
-    return YES;
-    
-};              // called when 'return' key pressed. return NO to ignore.
+    if (textField == _dobTF) {
+        [textField resignFirstResponder];
+        [_dobSubView setHidden:NO];
+    }
+    if (textField != _userNameTF) {
+        if (![_userNameTF.text length]) {
+            [_userNameTF becomeFirstResponder];
+            _userNameTF.layer.borderColor = [[UIColor redColor] CGColor];
+            _userNameTF.layer.borderWidth = 1.0f;
+            _userNameAlertLbl.textColor = [UIColor redColor];
+            [_userNameAlertLbl setHidden:NO];
+        }
+    }else if (textField != _emailTF){
+        if (![_emailTF.text length]) {
+            [textField resignFirstResponder];
+            [_emailTF becomeFirstResponder];
+            _emailTF.layer.borderColor = [[UIColor redColor] CGColor];
+            _emailTF.layer.borderWidth = 1.0f;
+            _emailAlertLbl.textColor = [UIColor redColor];
+            [_emailAlertLbl setHidden:NO];
+        }
+    }else if (textField != _pswdTF){
+        if (![_pswdTF.text length]) {
+            [textField resignFirstResponder];
+            [_pswdTF becomeFirstResponder];
+            _pswdTF.layer.borderColor = [[UIColor redColor] CGColor];
+            _pswdTF.layer.borderWidth = 1.0f;
+            _pswdAlertLbl.textColor = [UIColor redColor];
+            [_pswdAlertLbl setHidden:NO];
+        }
+    }else if (textField != _rePswdTF){
+        if (![_rePswdTF.text length]) {
+            [textField resignFirstResponder];
+            [_rePswdTF becomeFirstResponder];
+            _rePswdTF.layer.borderColor = [[UIColor redColor] CGColor];
+            _rePswdTF.layer.borderWidth = 1.0f;
+            _rePswdAlertLbl.textColor = [UIColor redColor];
+            [_rePswdAlertLbl setHidden:NO];
+        }else if (![_rePswdTF.text isEqualToString:_pswdTF.text]){
+            [textField resignFirstResponder];
+            [_rePswdTF becomeFirstResponder];
+            _rePswdTF.layer.borderColor = [[UIColor redColor] CGColor];
+            _rePswdTF.layer.borderWidth = 1.0f;
+            _rePswdAlertLbl.text = @"Password should be same";
+            _rePswdAlertLbl.textColor = [UIColor redColor];
+            [_rePswdAlertLbl setHidden:NO];
+
+        }
+    }
+
+};           // became first responder
 
 - (void)textFieldDidEndEditing:(UITextField *)textField{
 
-    CGRect frame = self.view.frame;
-    frame.origin.x = 0; // new x coordinate
-    frame.origin.y = 0; // new y coordinate
-    self.view.frame = frame;
-    
-    [textField resignFirstResponder];
+    if (textField == _userNameTF) {
+        [textField resignFirstResponder];
+        [_emailTF becomeFirstResponder];
+    }else if (textField == _emailTF){
+        [textField resignFirstResponder];
+        [_pswdTF becomeFirstResponder];
+    }else if (textField == _pswdTF){
+        [textField resignFirstResponder];
+        [_rePswdTF becomeFirstResponder];
+    }else if (textField == _rePswdTF){
+        [textField resignFirstResponder];
+        [_dobTF becomeFirstResponder];
+    }else if (textField == _mobileTF){
+        [textField resignFirstResponder];
+        [_addr1TF becomeFirstResponder];
+    }else if (textField == _addr1TF){
+        [textField resignFirstResponder];
+        [_addr2TF becomeFirstResponder];
+    }else if (textField == _addr2TF){
+        [textField resignFirstResponder];
+    }
+
 
 };             // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField{
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
 
-    if (textField == _addr1TF || textField == _addr2TF || textField == _mobileTF) {
-        [self animatedTextField:textField UP:YES withDIS:50];
-    }else if (textField == _addr2TF){
-        [self animatedTextField:textField UP:YES withDIS:60];
-    }else if (textField == _mobileTF){
-        [self animatedTextField:textField UP:YES withDIS:40];
-    }
-    if (textField == _dobTF) {
-        [self.dobSubView setHidden:NO];
+    if (textField == _userNameTF) {
         [textField resignFirstResponder];
-    }else{
-        [self.dobSubView setHidden:YES];
+        [_emailTF becomeFirstResponder];
+    }else if (textField == _emailTF){
+        [textField resignFirstResponder];
+        [_pswdTF becomeFirstResponder];
+    }else if (textField == _pswdTF){
+        [textField resignFirstResponder];
+        [_rePswdTF becomeFirstResponder];
+    }else if (textField == _rePswdTF){
+        [textField resignFirstResponder];
+        [_dobTF becomeFirstResponder];
+    }else if (textField == _mobileTF){
+        [textField resignFirstResponder];
+        [_addr1TF becomeFirstResponder];
+    }else if (textField == _addr1TF){
+        [textField resignFirstResponder];
+        [_addr2TF becomeFirstResponder];
+    }else if (textField == _addr2TF){
+        [textField resignFirstResponder];
     }
     
-};           // became first responder
+    return YES;
+
+};              // called when 'return' key pressed. return NO to ignore.
+
+
+
+
+//- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+//
+////    if (textField == _addr1TF || textField == _addr2TF || textField == _mobileTF) {
+////        [self animatedTextField:textField UP:NO];
+////    }
+//    CGRect frame = self.view.frame;
+//    frame.origin.x = 0; // new x coordinate
+//    frame.origin.y = 0; // new y coordinate
+//    self.view.frame = frame;
+//    
+//    [textField resignFirstResponder];
+//    return YES;
+//    
+//};              // called when 'return' key pressed. return NO to ignore.
+//
+//- (void)textFieldDidEndEditing:(UITextField *)textField{
+//
+//    CGRect frame = self.view.frame;
+//    frame.origin.x = 0; // new x coordinate
+//    frame.origin.y = 0; // new y coordinate
+//    self.view.frame = frame;
+//    
+//    [textField resignFirstResponder];
+//
+//};             // may be called if forced even if shouldEndEditing returns NO (e.g. view removed from window) or endEditing:YES called
+//
+//- (void)textFieldDidBeginEditing:(UITextField *)textField{
+//
+//    if (textField == _addr1TF || textField == _addr2TF || textField == _mobileTF) {
+//        [self animatedTextField:textField UP:YES withDIS:50];
+//    }else if (textField == _addr2TF){
+//        [self animatedTextField:textField UP:YES withDIS:60];
+//    }else if (textField == _mobileTF){
+//        [self animatedTextField:textField UP:YES withDIS:40];
+//    }
+//    if (textField == _dobTF) {
+//        [self.dobSubView setHidden:NO];
+//        [textField resignFirstResponder];
+//    }else{
+//        [self.dobSubView setHidden:YES];
+//    }
+//    
+//};           // became first responder
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -148,8 +266,7 @@
 - (IBAction)datePickr_Tapped:(UIDatePicker *)sender {
     
     NSDateFormatter *datefomat = [[NSDateFormatter alloc] init];
-    [datefomat setDateFormat:@"MM/DD/YYYY"];
-    
+    [datefomat setDateFormat:@"MM/dd/yyyy"];
     NSString *formattedDate = [datefomat stringFromDate:self.datePickr_outlet.date];
     dateStr = formattedDate;
     
@@ -349,4 +466,9 @@
 
 
 
+- (IBAction)cancelBtn_Tapped:(UIButton *)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
 @end

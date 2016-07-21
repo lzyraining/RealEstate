@@ -175,13 +175,112 @@
                     <view key="view" contentMode="scaleToFill" id="gua-n7-pFK">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Search your property address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWd-fD-04z">
+                                <rect key="frame" x="20" y="97" width="269" height="21"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
+                                <color key="textColor" red="0.4431372549" green="0.85098039219999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Street" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uNE-So-iaf">
+                                <rect key="frame" x="43" y="140" width="293" height="30"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Suit #" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CAe-gw-QwO">
+                                <rect key="frame" x="43" y="188" width="111" height="30"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qtF-2a-jc9">
+                                <rect key="frame" x="191" y="188" width="56" height="30"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zip Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Di3-Ot-qwS">
+                                <rect key="frame" x="255" y="188" width="81" height="30"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2Xv-xk-u0k">
+                                <rect key="frame" x="43" y="274" width="293" height="185"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6cm-0B-sOZ">
+                                <rect key="frame" x="43" y="489" width="198" height="27"/>
+                                <color key="backgroundColor" red="0.4431372549" green="0.85098039219999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="This is my property location">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X55-23-M5h">
+                                <rect key="frame" x="43" y="532" width="166" height="24"/>
+                                <color key="backgroundColor" red="0.4431372549" green="0.85098039219999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="I need change address">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gib-iY-qvt">
+                                <rect key="frame" x="276" y="232" width="60" height="23"/>
+                                <color key="backgroundColor" red="0.4431372549" green="0.85098039219999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AjQ-5Y-tXE">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <color key="backgroundColor" red="0.4431372549" green="0.85098039219999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="New Property" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YHM-eF-VgE">
+                                <rect key="frame" x="121" y="28" width="132" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Htn-Lf-7r9">
+                                <rect key="frame" x="2" y="24" width="56" height="30"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qj9-oN-BXQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1563.5" y="1083.5"/>
+            <point key="canvasLocation" x="1542.5" y="1072.5"/>
+        </scene>
+        <!--New Property View Controller-->
+        <scene sceneID="6c4-M9-ZiC">
+            <objects>
+                <viewController storyboardIdentifier="NewPropertyViewController" id="Ta9-aX-aqs" customClass="NewPropertyViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fsp-7S-jqc"/>
+                        <viewControllerLayoutGuide type="bottom" id="90K-TL-OPR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Lgx-hN-jDf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECU-kI-KWG">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
+                                <color key="backgroundColor" red="0.4431372549" green="0.85098039219999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Ga-sR-i1n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1961.5" y="1072.5"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="Wvo-ia-ZgL">
@@ -197,7 +296,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lD7-tZ-iUR">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
-                                <color key="backgroundColor" red="0.57148367570000003" green="0.76645751279999996" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.4431372549" green="0.85098039219999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -293,6 +392,9 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="cancelBtn_Tapped:" destination="YDI-Bv-Mrc" eventType="touchUpInside" id="UIp-KL-lqK"/>
+                                </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pAl-op-opr">
                                 <rect key="frame" x="0.0" y="407" width="375" height="260"/>
