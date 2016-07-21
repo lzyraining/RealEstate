@@ -1,15 +1,14 @@
 //
-//  HomeViewController.h
+//  MyFavoriteViewController.h
 //  RealEstate
 //
-//  Created by Zhuoyu Li on 7/20/16.
+//  Created by Zhuoyu Li on 7/21/16.
 //  Copyright © 2016 Zhuoyu. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-#import "MyTableViewCell.h"
 
-@interface HomeViewController : UIViewController <HeartPropertyProtocol> 
+@interface MyFavoriteViewController : UIViewController
 
 @property (strong, nonatomic) NSString *uid;
 @property (strong, nonatomic) NSString *userType;

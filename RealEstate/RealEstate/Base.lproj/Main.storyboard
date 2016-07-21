@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9vL-lW-2As">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9vL-lW-2As">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -121,18 +121,6 @@
                                     <action selector="signOutBtn_tapped:" destination="lFO-ho-SnI" eventType="touchUpInside" id="BIN-We-y1V"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vo7-m5-oQR">
-                                <rect key="frame" x="283" y="628" width="57" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OPL-cr-Afe">
-                                <rect key="frame" x="283" y="624" width="57" height="30"/>
-                                <connections>
-                                    <action selector="displayBtn_tapped:" destination="lFO-ho-SnI" eventType="touchUpInside" id="j5e-sC-YUO"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BQV-nP-H2Y">
                                 <rect key="frame" x="0.0" y="106" width="375" height="510"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -149,12 +137,27 @@
                                 <rect key="frame" x="320" y="63" width="35" height="30"/>
                                 <state key="normal" title="Filter"/>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJ9-4s-hia">
+                                <rect key="frame" x="293" y="624" width="46" height="30"/>
+                                <state key="normal" title="Map"/>
+                                <state key="selected" title="List"/>
+                                <connections>
+                                    <action selector="displayBtn_tapped:" destination="lFO-ho-SnI" eventType="touchUpInside" id="kH3-6a-CNX"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Evy-Me-ivB">
+                                <rect key="frame" x="148" y="624" width="80" height="30"/>
+                                <state key="normal" title="My Favorite"/>
+                                <connections>
+                                    <action selector="myFavoriteBtn_tapped:" destination="lFO-ho-SnI" eventType="touchUpInside" id="87Y-KG-3Eu"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="diplayLbl" destination="Vo7-m5-oQR" id="bPp-43-ajQ"/>
+                        <outlet property="displayBtn" destination="MJ9-4s-hia" id="m4h-oR-D08"/>
                         <outlet property="myPostBtn" destination="Qdp-kt-66R" id="Bg7-M7-zsF"/>
                         <outlet property="presentView" destination="BQV-nP-H2Y" id="B9x-rO-3lU"/>
                         <outlet property="zipCodeTextField" destination="4YG-Ef-Lb7" id="gas-cN-bvU"/>
@@ -163,6 +166,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ji-id-O0T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1112.5" y="1072.5"/>
+        </scene>
+        <!--My Favorite View Controller-->
+        <scene sceneID="YHp-nI-A8M">
+            <objects>
+                <viewController storyboardIdentifier="MyFavoriteViewController" id="Cw4-wt-VLM" customClass="MyFavoriteViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2bQ-Ee-zX3"/>
+                        <viewControllerLayoutGuide type="bottom" id="bwV-EB-Y6Y"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kDk-IE-ozh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gLS-TK-YRq">
+                                <rect key="frame" x="12" y="20" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backBtn_tapped:" destination="Cw4-wt-VLM" eventType="touchUpInside" id="h2i-x1-AkN"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A3e-Ex-MWj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1112.5" y="1814.5"/>
         </scene>
         <!--My Post View Controller-->
         <scene sceneID="hzX-Bx-1mR">
