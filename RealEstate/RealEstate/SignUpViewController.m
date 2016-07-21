@@ -89,7 +89,6 @@
         [self animatedTextField:textField UP:YES withDIS:40];
     }
     if (textField == _dobTF) {
-        //[_dobTF resignFirstResponder];
         [self.dobSubView setHidden:NO];
         [textField resignFirstResponder];
     }else{
@@ -123,7 +122,19 @@
 }
 - (IBAction)barDoneBtn_Tapped:(UIBarButtonItem *)sender {
     
-    _dobTF.text = dateStr;
+    if ([dateStr length]) {
+        self.dobTF.text = dateStr;
+    }else{
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc]init];
+        [dateFormatter setDateFormat:@"MM/dd/YYYY"];
+        
+        NSDate *date = [NSDate date];
+        NSString *dateString = [dateFormatter stringFromDate:date];
+        dateStr = dateString;
+        self.dobTF.text = dateStr;
+    }
+    
+    [_dobTF resignFirstResponder];
     [self.dobSubView setHidden:YES];
     
 }
