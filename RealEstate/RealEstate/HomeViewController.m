@@ -8,7 +8,8 @@
 
 #import "HomeViewController.h"
 #import "MyPostViewController.h"
-
+#import "MyMapView.h"
+#import "MyTableView.h"
 
 
 @interface HomeViewController ()
@@ -18,6 +19,9 @@
 - (IBAction)signOutBtn_tapped:(id)sender;
 @property (weak, nonatomic) IBOutlet UILabel *diplayLbl;
 
+@property (strong, nonatomic) IBOutlet UIView *presentView;
+@property (strong, nonatomic) MyMapView *myMapView;
+@property (strong, nonatomic) MyTableView *myTableView;
 
 - (IBAction)displayBtn_tapped:(id)sender;
 
@@ -36,6 +40,11 @@
     if ([_userType isEqualToString:@"buyer"]) {
         [_myPostBtn setHidden:YES];
     }
+    self.myMapView = [[[NSBundle mainBundle] loadNibNamed:@"MyMapView" owner:self options:nil] objectAtIndex:0];
+    self.myTableView = [[[NSBundle mainBundle] loadNibNamed:@"MyTableView" owner:self options:nil] objectAtIndex:0];
+    self.myMapView.frame = CGRectMake(0, 0, self.presentView.frame.size.width, self.presentView.frame.size.height);
+    self.myTableView.frame = CGRectMake(0, 0, self.presentView.frame.size.width, self.presentView.frame.size.height);
+    [self.presentView addSubview:_myMapView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,10 +73,23 @@
 - (IBAction)displayBtn_tapped:(id)sender {
     if ([_diplayLbl.text isEqualToString:@"List"]) {
         _diplayLbl.text = @"Map";
-        
+        [UIView transitionWithView:self.presentView
+                          duration:1
+                           options:UIViewAnimationOptionTransitionFlipFromLeft
+                        animations:^{
+                            [self.myMapView removeFromSuperview];
+                            [self.presentView addSubview:self.myTableView];
+                            _myTableView.myLbl.text = @"Hello";
+                        } completion:nil];
+
     }
     else {
         _diplayLbl.text = @"List";
+        [UIView transitionFromView:_myTableView
+                            toView:_myMapView
+                          duration:1.0
+                           options:UIViewAnimationOptionTransitionFlipFromLeft
+                        completion:nil];
         
     }
 }

@@ -133,6 +133,10 @@
                                     <action selector="displayBtn_tapped:" destination="lFO-ho-SnI" eventType="touchUpInside" id="j5e-sC-YUO"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BQV-nP-H2Y">
+                                <rect key="frame" x="20" y="75" width="335" height="513"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -140,6 +144,7 @@
                     <connections>
                         <outlet property="diplayLbl" destination="Vo7-m5-oQR" id="bPp-43-ajQ"/>
                         <outlet property="myPostBtn" destination="Qdp-kt-66R" id="Bg7-M7-zsF"/>
+                        <outlet property="presentView" destination="BQV-nP-H2Y" id="B9x-rO-3lU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Ji-id-O0T" userLabel="First Responder" sceneMemberID="firstResponder"/>
