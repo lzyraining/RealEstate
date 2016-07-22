@@ -131,8 +131,6 @@
 				03CC4D901D40148C00A984DD /* Buyer */,
 				03CC4D8F1D40148300A984DD /* Seller */,
 				03CC4D7E1D40147200A984DD /* Main.storyboard */,
-				3083678D1D415F050024767C /* newPostViewController.h */,
-				3083678E1D415F050024767C /* newPostViewController.m */,
 				03CC4D841D40147200A984DD /* Assets.xcassets */,
 				03CC4D861D40147200A984DD /* LaunchScreen.storyboard */,
 				03CC4D891D40147200A984DD /* Info.plist */,
@@ -153,6 +151,8 @@
 		03CC4D8F1D40148300A984DD /* Seller */ = {
 			isa = PBXGroup;
 			children = (
+				3083678D1D415F050024767C /* newPostViewController.h */,
+				3083678E1D415F050024767C /* newPostViewController.m */,
 				03CC4D981D402CCB00A984DD /* MyPostViewController.h */,
 				03CC4D991D402CCB00A984DD /* MyPostViewController.m */,
 			);
