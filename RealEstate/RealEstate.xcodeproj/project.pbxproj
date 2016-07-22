@@ -32,8 +32,8 @@
 		03CC4DCC1D411F1900A984DD /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4DCA1D411F1900A984DD /* heart.png */; };
 		03CC4DCD1D411F1900A984DD /* like.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4DCB1D411F1900A984DD /* like.png */; };
 		03CC4DD01D41222000A984DD /* MyFavoriteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC4DCF1D41222000A984DD /* MyFavoriteViewController.m */; };
-		03CC4DD61D41262000A984DD /* Property+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC4DD31D41262000A984DD /* Property+CoreDataProperties.m */; };
 		03CC4DD71D41262000A984DD /* Property.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC4DD51D41262000A984DD /* Property.m */; };
+		03CC4E041D419F8200A984DD /* Property+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC4E031D419F8200A984DD /* Property+CoreDataProperties.m */; };
 		3083678F1D415F050024767C /* newPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3083678E1D415F050024767C /* newPostViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -74,10 +74,10 @@
 		03CC4DCB1D411F1900A984DD /* like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = like.png; sourceTree = "<group>"; };
 		03CC4DCE1D41222000A984DD /* MyFavoriteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFavoriteViewController.h; sourceTree = "<group>"; };
 		03CC4DCF1D41222000A984DD /* MyFavoriteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFavoriteViewController.m; sourceTree = "<group>"; };
-		03CC4DD21D41262000A984DD /* Property+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Property+CoreDataProperties.h"; sourceTree = "<group>"; };
-		03CC4DD31D41262000A984DD /* Property+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Property+CoreDataProperties.m"; sourceTree = "<group>"; };
 		03CC4DD41D41262000A984DD /* Property.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Property.h; sourceTree = "<group>"; };
 		03CC4DD51D41262000A984DD /* Property.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Property.m; sourceTree = "<group>"; };
+		03CC4E021D419F8200A984DD /* Property+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Property+CoreDataProperties.h"; sourceTree = "<group>"; };
+		03CC4E031D419F8200A984DD /* Property+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Property+CoreDataProperties.m"; sourceTree = "<group>"; };
 		3083678D1D415F050024767C /* newPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newPostViewController.h; sourceTree = "<group>"; };
 		3083678E1D415F050024767C /* newPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newPostViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -206,8 +206,8 @@
 			isa = PBXGroup;
 			children = (
 				03CC4D811D40147200A984DD /* RealEstate.xcdatamodeld */,
-				03CC4DD21D41262000A984DD /* Property+CoreDataProperties.h */,
-				03CC4DD31D41262000A984DD /* Property+CoreDataProperties.m */,
+				03CC4E021D419F8200A984DD /* Property+CoreDataProperties.h */,
+				03CC4E031D419F8200A984DD /* Property+CoreDataProperties.m */,
 				03CC4DD41D41262000A984DD /* Property.h */,
 				03CC4DD51D41262000A984DD /* Property.m */,
 			);
@@ -305,9 +305,9 @@
 				03CC4DAC1D406D1400A984DD /* MyMapView.m in Sources */,
 				03CC4D771D40147200A984DD /* main.m in Sources */,
 				03CC4D971D402C9600A984DD /* HomeViewController.m in Sources */,
-				03CC4DD61D41262000A984DD /* Property+CoreDataProperties.m in Sources */,
 				03CC4DD01D41222000A984DD /* MyFavoriteViewController.m in Sources */,
 				03CC4DB11D406DB400A984DD /* MyTableView.m in Sources */,
+				03CC4E041D419F8200A984DD /* Property+CoreDataProperties.m in Sources */,
 				03CC4DB81D40795A00A984DD /* MyTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

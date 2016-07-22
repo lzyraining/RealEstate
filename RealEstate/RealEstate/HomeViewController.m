@@ -171,15 +171,12 @@
         NSURL *imgUrl = [NSURL URLWithString:string];
         NSData *data = [NSData dataWithContentsOfURL:imgUrl];
         cell.imgView.image = [UIImage imageWithData:data];
-    }
-    BOOL like = NO;
+    }    
+    cell.likeBtn.selected = NO;
     for (Property *property in _myFavoriteArray) {
         if ([property.iD isEqualToString:[dict valueForKey:@"Property Id"]]) {
-            like = YES;
+            cell.likeBtn.selected = YES;
         }
-    }
-    if (like) {
-        cell.likeBtn.selected = YES;
     }
     
     cell.likeBtn.tag = indexPath.row;
@@ -217,6 +214,8 @@
         if (![_appdelegate.managedObjectContext save:&insertError]) {
             NSLog(@"Insert Data error, %@",[insertError description]);
         }
+        [self fetchMyFavoriteListFromCoreData];
+        [self.myTableView.tbView reloadData];
     }
     else {
         NSDictionary *propertyDict = [_propertyListPresentArray objectAtIndex:index];
@@ -232,6 +231,10 @@
             if (![_appdelegate.managedObjectContext save:&deleteError]) {
                 NSLog(@"Delete Data Error %@", [deleteError description]);
             }
+        });
+        [self fetchMyFavoriteListFromCoreData];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.myTableView.tbView reloadData];
         });
     }
 }

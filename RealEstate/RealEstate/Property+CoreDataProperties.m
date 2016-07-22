@@ -13,20 +13,20 @@
 
 @implementation Property (CoreDataProperties)
 
-@dynamic myUserId;
-@dynamic iD;
-@dynamic name;
-@dynamic type;
-@dynamic category;
 @dynamic address1;
 @dynamic address2;
-@dynamic zipCode;
+@dynamic category;
 @dynamic cost;
-@dynamic size;
 @dynamic descri;
-@dynamic sellerUid;
-@dynamic longitutde;
-@dynamic latitude;
+@dynamic iD;
 @dynamic imagePath;
+@dynamic latitude;
+@dynamic longitutde;
+@dynamic myUserId;
+@dynamic name;
+@dynamic sellerUid;
+@dynamic size;
+@dynamic type;
+@dynamic zipCode;
 
 @end

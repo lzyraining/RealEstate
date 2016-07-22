@@ -15,21 +15,21 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Property (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *myUserId;
-@property (nullable, nonatomic, retain) NSString *iD;
-@property (nullable, nonatomic, retain) NSString *name;
-@property (nullable, nonatomic, retain) NSString *type;
-@property (nullable, nonatomic, retain) NSString *category;
 @property (nullable, nonatomic, retain) NSString *address1;
 @property (nullable, nonatomic, retain) NSString *address2;
-@property (nullable, nonatomic, retain) NSString *zipCode;
+@property (nullable, nonatomic, retain) NSString *category;
 @property (nullable, nonatomic, retain) NSString *cost;
-@property (nullable, nonatomic, retain) NSString *size;
 @property (nullable, nonatomic, retain) NSString *descri;
-@property (nullable, nonatomic, retain) NSString *sellerUid;
-@property (nullable, nonatomic, retain) NSString *longitutde;
-@property (nullable, nonatomic, retain) NSString *latitude;
+@property (nullable, nonatomic, retain) NSString *iD;
 @property (nullable, nonatomic, retain) NSString *imagePath;
+@property (nullable, nonatomic, retain) NSString *latitude;
+@property (nullable, nonatomic, retain) NSString *longitutde;
+@property (nullable, nonatomic, retain) NSString *myUserId;
+@property (nullable, nonatomic, retain) NSString *name;
+@property (nullable, nonatomic, retain) NSString *sellerUid;
+@property (nullable, nonatomic, retain) NSString *size;
+@property (nullable, nonatomic, retain) NSString *type;
+@property (nullable, nonatomic, retain) NSString *zipCode;
 
 @end
 
