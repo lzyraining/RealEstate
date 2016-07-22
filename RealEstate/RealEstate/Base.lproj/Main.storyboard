@@ -129,6 +129,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bxr-xm-Ox7">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
+                                <color key="backgroundColor" red="0.35294117650000001" green="0.80392156859999997" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdp-kt-66R">
                                 <rect key="frame" x="10" y="20" width="56" height="30"/>
                                 <state key="normal" title="My Post"/>
@@ -147,8 +154,8 @@
                                 <rect key="frame" x="0.0" y="106" width="375" height="510"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3433433" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4YG-Ef-Lb7">
-                                <rect key="frame" x="20" y="63" width="275" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3433433" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4YG-Ef-Lb7">
+                                <rect key="frame" x="12" y="58" width="307" height="40"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
@@ -156,9 +163,16 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jng-iZ-87a">
-                                <rect key="frame" x="320" y="63" width="35" height="30"/>
+                                <rect key="frame" x="327" y="63" width="35" height="30"/>
                                 <state key="normal" title="Filter"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COR-Xc-QS3">
+                                <rect key="frame" x="0.0" y="619" width="375" height="48"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJ9-4s-hia">
                                 <rect key="frame" x="293" y="624" width="46" height="30"/>
                                 <state key="normal" title="Map"/>
@@ -175,12 +189,25 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4m-ET-KZ5">
-                                <rect key="frame" x="268" y="67" width="22" height="22"/>
+                                <rect key="frame" x="287" y="65" width="26" height="26"/>
                                 <state key="normal" backgroundImage="compass.png"/>
                                 <connections>
                                     <action selector="getMyLocationBtn_tapped:" destination="lFO-ho-SnI" eventType="touchUpInside" id="WgC-Ig-Ydb"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZeR-6y-XSx">
+                                <rect key="frame" x="155" y="24" width="64" height="21"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Home">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="20" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -355,7 +382,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0SL-cW-h1y">
                                 <rect key="frame" x="0.0" y="-6" width="375" height="65"/>
-                                <color key="backgroundColor" red="0.4431372549" green="0.85098039219999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.35294117647058826" green="0.80392156862745101" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
