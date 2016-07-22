@@ -171,8 +171,8 @@
     CLLocation *currentLocation = [locations lastObject];
     if (currentLocation != nil) {
         [_locationManager stopUpdatingLocation];
-        CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
-        [geoCoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+        [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
             if (!error) {
                 MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(currentLocation.coordinate, 5000, 5000);
                 [self.myMapView.mpView setRegion:region];
@@ -181,27 +181,31 @@
     }
 }
 
-
-//-(void) reverseGeoCoder:(NSString*) zipcode{
-//    mapgeocoder = [[CLGeocoder alloc]init];
-//    
-//    [mapgeocoder geocodeAddressString:zipcode completionHandler:^(NSArray<CLPlacemark >  Nullable placemarks, NSError * Nullable error) {
-//        if (placemarks && [placemarks count]>0) {
-//            CLPlacemark *place = [placemarks lastObject];
-//            MKPlacemark *placemark = [[MKPlacemark alloc]initWithPlacemark:place];
-//            
-//            MKCoordinateRegion region = self.mapView.region;
-//            
-//            region.center = placemark.location.coordinate;
-//            region.span.latitudeDelta/=200.0;
-//            region.span.longitudeDelta/=200.0;
-//            [self.mapView setRegion:region animated:YES];
-//            [self.mapView addAnnotation:placemark];
-//            
-//        }
-//    }];
-//}
-
+-(void)reverseGeoCoder:(NSString*) addressStr {
+    CLGeocoder *zipGeocoder = [[CLGeocoder alloc] init];
+    [zipGeocoder geocodeAddressString:addressStr completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        if (!error) {
+            if (placemarks && [placemarks count]>0) {
+                CLPlacemark *place = [placemarks lastObject];
+                MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:place];
+                
+                MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(placemark.location.coordinate, 5000, 5000);
+//                region.center = placemark.location.coordinate;
+//                region.span.latitudeDelta/=100.0;
+//                region.span.longitudeDelta/=100.0;
+                
+                [self.myMapView.mpView setRegion:region animated:YES];
+            }
+        }
+        else {
+            NSLog(@"Address error: %@", [error description]);
+            UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Please enter valid address" preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+            [controller addAction:action];
+            [self presentViewController:controller animated:YES completion:nil];
+        }
+    }];
+}
 
 #pragma mark- TableView Delegate Method
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -307,7 +311,9 @@
 #pragma mark- TextField Delegate Method
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
+    [self reverseGeoCoder:textField.text];
     [self callPropertySearchApi];
+    
     [textField resignFirstResponder];
     return YES;
 }// called when 'return' key pressed. return NO to ignore.

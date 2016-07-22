@@ -35,6 +35,7 @@
 		03CC4DD71D41262000A984DD /* Property.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC4DD51D41262000A984DD /* Property.m */; };
 		03CC4E041D419F8200A984DD /* Property+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC4E031D419F8200A984DD /* Property+CoreDataProperties.m */; };
 		03CC4E061D41A58200A984DD /* compass.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4E051D41A58200A984DD /* compass.png */; };
+		03CC4E091D41D5E900A984DD /* MyFavorCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC4E081D41D5E900A984DD /* MyFavorCollectionViewCell.m */; };
 		3083678F1D415F050024767C /* newPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3083678E1D415F050024767C /* newPostViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +81,8 @@
 		03CC4E021D419F8200A984DD /* Property+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Property+CoreDataProperties.h"; sourceTree = "<group>"; };
 		03CC4E031D419F8200A984DD /* Property+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Property+CoreDataProperties.m"; sourceTree = "<group>"; };
 		03CC4E051D41A58200A984DD /* compass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = compass.png; sourceTree = "<group>"; };
+		03CC4E071D41D5E900A984DD /* MyFavorCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyFavorCollectionViewCell.h; sourceTree = "<group>"; };
+		03CC4E081D41D5E900A984DD /* MyFavorCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyFavorCollectionViewCell.m; sourceTree = "<group>"; };
 		3083678D1D415F050024767C /* newPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newPostViewController.h; sourceTree = "<group>"; };
 		3083678E1D415F050024767C /* newPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newPostViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,6 +124,8 @@
 				03CC4D791D40147200A984DD /* AppDelegate.m */,
 				03CC4DCE1D41222000A984DD /* MyFavoriteViewController.h */,
 				03CC4DCF1D41222000A984DD /* MyFavoriteViewController.m */,
+				03CC4E071D41D5E900A984DD /* MyFavorCollectionViewCell.h */,
+				03CC4E081D41D5E900A984DD /* MyFavorCollectionViewCell.m */,
 				03CC4DB41D40748D00A984DD /* HomeViewController */,
 				03CC4D911D402B8700A984DD /* Login + SignUp */,
 				03CC4D901D40148C00A984DD /* Buyer */,
@@ -303,6 +308,7 @@
 				03CC4D7D1D40147200A984DD /* ViewController.m in Sources */,
 				03CC4D941D402BDF00A984DD /* SignUpViewController.m in Sources */,
 				03CC4D9A1D402CCB00A984DD /* MyPostViewController.m in Sources */,
+				03CC4E091D41D5E900A984DD /* MyFavorCollectionViewCell.m in Sources */,
 				03CC4D831D40147200A984DD /* RealEstate.xcdatamodeld in Sources */,
 				3083678F1D415F050024767C /* newPostViewController.m in Sources */,
 				03CC4D7A1D40147200A984DD /* AppDelegate.m in Sources */,
