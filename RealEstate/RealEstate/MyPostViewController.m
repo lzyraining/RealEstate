@@ -9,6 +9,7 @@
 #import "MyPostViewController.h"
 
 @interface MyPostViewController ()
+- (IBAction)backBtn_Tapped:(UIButton *)sender;
 
 @end
 
@@ -34,4 +35,9 @@
 }
 */
 
+- (IBAction)backBtn_Tapped:(UIButton *)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
 @end
