@@ -83,8 +83,11 @@
     
     [_locationManager requestWhenInUseAuthorization];
     
-    
 }
+
+
+
+
 
 -(void)fetchMyFavoriteListFromCoreData {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];

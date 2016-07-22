@@ -21,6 +21,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *sellerBtn;
 @property (weak, nonatomic) IBOutlet UIButton *buyerBtn;
 
+@property (weak, nonatomic) IBOutlet UIView *loginSubView;
+@property (weak, nonatomic) IBOutlet UIImageView *loginBgView;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImgView;
 
 
 
@@ -52,7 +55,49 @@
             _buyerBtn.selected = YES;
         }
     }
+    [self setLoginSubViewUIcomponent];
+    [self setupAnimation];
 }
+
+-(void)setLoginSubViewUIcomponent {
+    
+    CALayer *emailBorder = [CALayer layer];
+    emailBorder.frame = CGRectMake(0.0f, self.emailTextField.frame.size.height - 1, self.emailTextField.frame.size.width, 1.0f);
+    emailBorder.backgroundColor = [UIColor blackColor].CGColor;
+    [self.emailTextField.layer addSublayer:emailBorder];
+    
+    CALayer *passwordBorder = [CALayer layer];
+    passwordBorder.frame = CGRectMake(0.0f, self.passwordTextField.frame.size.height - 1, self.passwordTextField.frame.size.width, 1.0f);
+    passwordBorder.backgroundColor = [UIColor blackColor].CGColor;
+    [self.passwordTextField.layer addSublayer:passwordBorder];
+    
+}
+
+-(void)setupAnimation {
+    
+    [_loginBgView setFrame:CGRectMake(-80, -80, 455, 520)];
+    [UIView beginAnimations:@"animateBgImageView" context:nil];
+    [UIView setAnimationDuration:1.2];
+    [_loginBgView setFrame:CGRectMake(0, 0, 375, 440)];
+    [self.view addSubview:_loginBgView];
+    [UIView commitAnimations];
+    
+    [_logoImgView setFrame:CGRectMake(55, 667, 284, 59)];
+    [UIView beginAnimations:@"animateLogoImgView" context:nil];
+    [UIView setAnimationDuration:0.6];
+    [_logoImgView setFrame:CGRectMake(55, 28, 284, 59)];
+    [self.view addSubview:_logoImgView];
+    [UIView commitAnimations];
+    
+    [_loginSubView setFrame:CGRectMake(42, 667, 305, 270)];
+    [UIView beginAnimations:@"animateLoginSubView" context:nil];
+    [UIView setAnimationDuration:0.8];
+    [_loginSubView setFrame:CGRectMake(42, 351, 305, 270)];
+    [self.view addSubview:_loginSubView];
+    [UIView commitAnimations];
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
