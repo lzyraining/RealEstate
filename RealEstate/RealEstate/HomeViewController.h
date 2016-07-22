@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "MyTableViewCell.h"
+#import "MyMapView.h"
 
-@interface HomeViewController : UIViewController <HeartPropertyProtocol> 
+@interface HomeViewController : UIViewController <HeartPropertyProtocol,CLLocationManagerDelegate,MKMapViewDelegate>
 
 @property (strong, nonatomic) NSString *uid;
 @property (strong, nonatomic) NSString *userType;

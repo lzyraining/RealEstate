@@ -126,7 +126,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="3433433" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4YG-Ef-Lb7">
-                                <rect key="frame" x="20" y="63" width="242" height="30"/>
+                                <rect key="frame" x="20" y="63" width="275" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -150,6 +150,13 @@
                                 <state key="normal" title="My Favorite"/>
                                 <connections>
                                     <action selector="myFavoriteBtn_tapped:" destination="lFO-ho-SnI" eventType="touchUpInside" id="87Y-KG-3Eu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4m-ET-KZ5">
+                                <rect key="frame" x="268" y="67" width="22" height="22"/>
+                                <state key="normal" backgroundImage="compass.png"/>
+                                <connections>
+                                    <action selector="getMyLocationBtn_tapped:" destination="lFO-ho-SnI" eventType="touchUpInside" id="WgC-Ig-Ydb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -185,10 +192,6 @@
                                 <connections>
                                     <action selector="backBtn_tapped:" destination="Cw4-wt-VLM" eventType="touchUpInside" id="h2i-x1-AkN"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wIL-Qm-GUP">
-                                <rect key="frame" x="158" y="261" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -456,6 +459,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="compass.png" width="32" height="32"/>
         <image name="radio_sel.png" width="700" height="700"/>
         <image name="radio_unsel.png" width="700" height="700"/>
     </resources>

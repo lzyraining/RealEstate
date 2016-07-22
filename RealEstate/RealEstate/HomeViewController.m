@@ -8,7 +8,6 @@
 
 #import "HomeViewController.h"
 #import "MyPostViewController.h"
-#import "MyMapView.h"
 #import "MyTableView.h"
 #import "MyFavoriteViewController.h"
 #import "AppDelegate.h"
@@ -29,11 +28,17 @@
 
 - (IBAction)myFavoriteBtn_tapped:(id)sender;
 
+- (IBAction)getMyLocationBtn_tapped:(id)sender;
+
+
 @property (strong, nonatomic) NSArray *propertListDataArray;
 @property (strong, nonatomic) NSMutableArray *propertyListPresentArray;
 @property (strong, nonatomic) NSMutableArray *myFavoriteArray;
 
 @property (strong, nonatomic) AppDelegate *appdelegate;
+
+@property(strong, nonatomic) CLLocationManager *locationManager;
+
 
 @end
 
@@ -65,6 +70,20 @@
     self.myMapView.frame = CGRectMake(0, 0, self.presentView.frame.size.width, self.presentView.frame.size.height);
     self.myTableView.frame = CGRectMake(0, 0, self.presentView.frame.size.width, self.presentView.frame.size.height);
     [self.presentView addSubview:_myMapView];
+    
+    //Configuer map
+    [self.myMapView.mpView setShowsUserLocation:YES];
+    [self.myMapView.mpView setZoomEnabled:YES];
+    [self.myMapView.mpView setMapType:MKMapTypeStandard];
+    
+    
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.delegate = self;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+    [_locationManager requestWhenInUseAuthorization];
+    
+    
 }
 
 -(void)fetchMyFavoriteListFromCoreData {
@@ -139,7 +158,52 @@
     [self presentViewController:controller animated:YES completion:nil];
 }
 
-#pragma mark- TableView Delegate Controller
+- (IBAction)getMyLocationBtn_tapped:(id)sender {
+    _zipCodeTextField.text = @"";
+    [_locationManager startUpdatingLocation];
+}
+
+#pragma mark- MapView Delegate Method
+
+
+- (void)locationManager:(CLLocationManager *)manager
+     didUpdateLocations:(NSArray<CLLocation *> *)locations __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_6_0) {
+    CLLocation *currentLocation = [locations lastObject];
+    if (currentLocation != nil) {
+        [_locationManager stopUpdatingLocation];
+        CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
+        [geoCoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+            if (!error) {
+                MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(currentLocation.coordinate, 5000, 5000);
+                [self.myMapView.mpView setRegion:region];
+            }
+        }];
+    }
+}
+
+
+//-(void) reverseGeoCoder:(NSString*) zipcode{
+//    mapgeocoder = [[CLGeocoder alloc]init];
+//    
+//    [mapgeocoder geocodeAddressString:zipcode completionHandler:^(NSArray<CLPlacemark >  Nullable placemarks, NSError * Nullable error) {
+//        if (placemarks && [placemarks count]>0) {
+//            CLPlacemark *place = [placemarks lastObject];
+//            MKPlacemark *placemark = [[MKPlacemark alloc]initWithPlacemark:place];
+//            
+//            MKCoordinateRegion region = self.mapView.region;
+//            
+//            region.center = placemark.location.coordinate;
+//            region.span.latitudeDelta/=200.0;
+//            region.span.longitudeDelta/=200.0;
+//            [self.mapView setRegion:region animated:YES];
+//            [self.mapView addAnnotation:placemark];
+//            
+//        }
+//    }];
+//}
+
+
+#pragma mark- TableView Delegate Method
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [_propertyListPresentArray count];
 }
