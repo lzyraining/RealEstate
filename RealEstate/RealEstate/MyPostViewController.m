@@ -7,9 +7,11 @@
 //
 
 #import "MyPostViewController.h"
+#import "newPostViewController.h"
 
 @interface MyPostViewController ()
 - (IBAction)backBtn_Tapped:(UIButton *)sender;
+- (IBAction)prpCorrectBtn_Tapped:(UIButton *)sender;
 
 @end
 
@@ -38,6 +40,13 @@
 - (IBAction)backBtn_Tapped:(UIButton *)sender {
     
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+- (IBAction)prpCorrectBtn_Tapped:(UIButton *)sender {
+    
+    newPostViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"newPostViewController"];
+    [self presentViewController:controller animated:YES completion:nil];
     
 }
 @end

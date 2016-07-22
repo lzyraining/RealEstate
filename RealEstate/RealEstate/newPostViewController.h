@@ -10,4 +10,6 @@
 
 @interface newPostViewController : UIViewController
 
+@property (nonatomic, strong) NSString *prpType;
+
 @end

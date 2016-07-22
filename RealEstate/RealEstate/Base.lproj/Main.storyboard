@@ -435,6 +435,9 @@
                                 <state key="normal" title="This is my property">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="prpCorrectBtn_Tapped:" destination="N6E-c8-K7Q" eventType="touchUpInside" id="x9D-6V-XlM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ot-Hy-RQX">
                                 <rect key="frame" x="55" y="547" width="30" height="30"/>
@@ -496,24 +499,57 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nj8-Y8-gOE">
-                                <rect key="frame" x="47" y="186" width="113" height="25"/>
+                                <rect key="frame" x="47" y="238" width="113" height="25"/>
                                 <color key="backgroundColor" red="0.4431372549" green="0.85098039219999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Property Type">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="CfD-wJ-Li9" kind="popoverPresentation" identifier="popoverSegue" popoverAnchorView="Nj8-Y8-gOE" id="hOr-7w-Fja">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FGQ-I3-sVc">
+                                <rect key="frame" x="202" y="187" width="44" height="30"/>
+                                <state key="normal" title="Rent"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pXe-u9-kSc">
+                                <rect key="frame" x="191" y="240" width="101" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.4431372549" green="0.85098039219999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VHu-Ia-OK4">
+                                <rect key="frame" x="0.0" y="26" width="30" height="30"/>
+                                <fontDescription key="fontDescription" name="BodoniSvtyTwoITCTT-Book" family="Bodoni 72" pointSize="23"/>
+                                <state key="normal" title="&lt;">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="backBtn_Tapped:" destination="fG9-yo-7Dr" eventType="touchUpInside" id="pdj-Hz-Mht"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8xj-di-udm">
+                                <rect key="frame" x="88" y="187" width="42" height="30"/>
+                                <state key="normal" title="Sell"/>
                             </button>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="prpTypeLbl" destination="pXe-u9-kSc" id="7w1-7T-U1I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tOh-qL-Sba" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2175.5" y="1078.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Type Popover View Controller-->
         <scene sceneID="BPy-3J-2Uf">
             <objects>
-                <viewController id="CfD-wJ-Li9" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="typePopoverViewController" id="CfD-wJ-Li9" customClass="typePopoverViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IIO-0E-eHt"/>
                         <viewControllerLayoutGuide type="bottom" id="sMb-Vy-Tkg"/>
@@ -522,33 +558,40 @@
                         <rect key="frame" x="0.0" y="0.0" width="279" height="180"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ryl-51-0EU">
-                                <rect key="frame" x="32" y="34" width="49" height="30"/>
+                            <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ryl-51-0EU">
+                                <rect key="frame" x="35" y="44" width="49" height="30"/>
                                 <state key="normal" title="Plot"/>
+                                <connections>
+                                    <action selector="plot_Tapped:" destination="CfD-wJ-Li9" eventType="touchUpInside" id="r5s-G1-h6l"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTX-A0-AMA">
-                                <rect key="frame" x="114" y="34" width="50" height="30"/>
+                            <button opaque="NO" tag="102" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTX-A0-AMA">
+                                <rect key="frame" x="114" y="44" width="50" height="30"/>
                                 <state key="normal" title="Flat"/>
+                                <connections>
+                                    <action selector="flat_Tapped:" destination="CfD-wJ-Li9" eventType="touchUpInside" id="pnj-zl-pOk"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUJ-kL-T1o">
-                                <rect key="frame" x="194" y="34" width="60" height="30"/>
-                                <state key="normal" title="House"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wK9-JP-LSF">
-                                <rect key="frame" x="35" y="75" width="42" height="30"/>
+                            <button opaque="NO" tag="104" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wK9-JP-LSF">
+                                <rect key="frame" x="38" y="111" width="42" height="30"/>
                                 <state key="normal" title="Office"/>
+                                <connections>
+                                    <action selector="office_Tapped:" destination="CfD-wJ-Li9" eventType="touchUpInside" id="hVH-Hx-3p3"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8IC-Jd-YUl">
-                                <rect key="frame" x="124" y="75" width="30" height="30"/>
+                            <button opaque="NO" tag="105" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8IC-Jd-YUl">
+                                <rect key="frame" x="124" y="111" width="30" height="30"/>
                                 <state key="normal" title="Villa"/>
+                                <connections>
+                                    <action selector="villa_Tapped:" destination="CfD-wJ-Li9" eventType="touchUpInside" id="U01-QX-dlg"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ao3-ZZ-DIj">
-                                <rect key="frame" x="171" y="130" width="41" height="30"/>
-                                <state key="normal" title="Sell"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KF9-jU-bhY">
-                                <rect key="frame" x="60" y="130" width="32" height="30"/>
-                                <state key="normal" title="Rent"/>
+                            <button opaque="NO" tag="103" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUJ-kL-T1o">
+                                <rect key="frame" x="183" y="44" width="60" height="30"/>
+                                <state key="normal" title="House"/>
+                                <connections>
+                                    <action selector="house_Tapped:" destination="CfD-wJ-Li9" eventType="touchUpInside" id="nZQ-nH-NuR"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -556,10 +599,17 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="279" height="180"/>
+                    <connections>
+                        <outlet property="flat_outlet" destination="fTX-A0-AMA" id="0y6-lS-N9Z"/>
+                        <outlet property="house_outlet" destination="qUJ-kL-T1o" id="uTJ-zX-bH9"/>
+                        <outlet property="office_outlet" destination="wK9-JP-LSF" id="CC1-Q9-Djd"/>
+                        <outlet property="plot_outlet" destination="Ryl-51-0EU" id="KgB-gf-be7"/>
+                        <outlet property="villa_outlet" destination="8IC-Jd-YUl" id="ftg-QB-pUP"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yhR-0f-hIs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2550.5" y="972"/>
+            <point key="canvasLocation" x="2597.5" y="1079"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="Wvo-ia-ZgL">

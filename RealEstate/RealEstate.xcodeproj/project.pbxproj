@@ -43,6 +43,7 @@
 		03CC4E1E1D428F3400A984DD /* signup.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4E1C1D428F3400A984DD /* signup.png */; };
 		03CC4E1F1D428F3400A984DD /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4E1D1D428F3400A984DD /* login.png */; };
 		3083678F1D415F050024767C /* newPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3083678E1D415F050024767C /* newPostViewController.m */; };
+		30A5F40F1D42C2DA00C330D6 /* typePopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A5F40E1D42C2DA00C330D6 /* typePopoverViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,8 @@
 		03CC4E1D1D428F3400A984DD /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
 		3083678D1D415F050024767C /* newPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newPostViewController.h; sourceTree = "<group>"; };
 		3083678E1D415F050024767C /* newPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newPostViewController.m; sourceTree = "<group>"; };
+		30A5F40D1D42C2DA00C330D6 /* typePopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = typePopoverViewController.h; sourceTree = "<group>"; };
+		30A5F40E1D42C2DA00C330D6 /* typePopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = typePopoverViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +170,8 @@
 				3083678E1D415F050024767C /* newPostViewController.m */,
 				03CC4D981D402CCB00A984DD /* MyPostViewController.h */,
 				03CC4D991D402CCB00A984DD /* MyPostViewController.m */,
+				30A5F40D1D42C2DA00C330D6 /* typePopoverViewController.h */,
+				30A5F40E1D42C2DA00C330D6 /* typePopoverViewController.m */,
 			);
 			name = Seller;
 			sourceTree = "<group>";
@@ -330,6 +335,7 @@
 			files = (
 				03CC4DD71D41262000A984DD /* Property.m in Sources */,
 				03CC4D7D1D40147200A984DD /* ViewController.m in Sources */,
+				30A5F40F1D42C2DA00C330D6 /* typePopoverViewController.m in Sources */,
 				03CC4D941D402BDF00A984DD /* SignUpViewController.m in Sources */,
 				03CC4D9A1D402CCB00A984DD /* MyPostViewController.m in Sources */,
 				03CC4E091D41D5E900A984DD /* MyFavorCollectionViewCell.m in Sources */,
