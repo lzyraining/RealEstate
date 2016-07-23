@@ -83,20 +83,21 @@
     }
     cell.descrip.text = property.descri;
     
-    NSString *img = property.imagePath;
-    if (![img length]) {
-        cell.imgView.image = [UIImage imageNamed:@"photo_not_ava.jpg"];
-    }
-    else {
+    dispatch_queue_t queque = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+    dispatch_sync(queque, ^{
+        NSString *img = property.imagePath;
         NSString *str = @"";
         str = [img stringByReplacingOccurrencesOfString:@"\\"                                                withString:@"/"];
         NSString *string = [NSString stringWithFormat:@"http://%@",str];
         NSURL *imgUrl = [NSURL URLWithString:string];
         NSData *data = [NSData dataWithContentsOfURL:imgUrl];
-        cell.imgView.image = [UIImage imageWithData:data];
-    }
-
-    
+        dispatch_async(dispatch_get_main_queue(), ^{
+            cell.imgView.image = [UIImage imageWithData:data];
+            if (cell.imgView.image == nil) {
+                cell.imgView.image = [UIImage imageNamed:@"photo_not_ava.jpg"];
+            }
+        });
+    });
     return cell;
 }
 

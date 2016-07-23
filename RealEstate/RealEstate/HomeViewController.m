@@ -83,14 +83,7 @@
     
     [_locationManager requestWhenInUseAuthorization];
     
-    
-    
-    
 }
-
-
-
-
 
 -(void)fetchMyFavoriteListFromCoreData {
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -234,23 +227,28 @@
     
     cell.addressLbl.text = [NSString stringWithFormat:@"%@, %@",[dict valueForKey:@"Property Address1"],[dict valueForKey:@"Property Address2"]];
     
-    NSString *img = [dict valueForKey:@"Property Image 1"];
-    if (![img length]) {
-        cell.imgView.image = [UIImage imageNamed:@"photo_not_ava.jpg"];
-    }
-    else {
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+    dispatch_sync(queue, ^{
+        NSString *img = [dict valueForKey:@"Property Image 1"];
         NSString *str = @"";
         str = [img stringByReplacingOccurrencesOfString:@"\\"                                                withString:@"/"];
         NSString *string = [NSString stringWithFormat:@"http://%@",str];
         NSURL *imgUrl = [NSURL URLWithString:string];
         NSData *data = [NSData dataWithContentsOfURL:imgUrl];
-        cell.imgView.image = [UIImage imageWithData:data];
-    }    
+        dispatch_async(dispatch_get_main_queue(), ^{
+            cell.imgView.image = [UIImage imageWithData:data];
+            if (cell.imgView.image == nil) {
+                cell.imgView.image = [UIImage imageNamed:@"photo_not_ava.jpg"];
+            }
+        });
+    });
+    
     cell.likeBtn.selected = NO;
     for (Property *property in _myFavoriteArray) {
         if ([property.iD isEqualToString:[dict valueForKey:@"Property Id"]]) {
             cell.likeBtn.selected = YES;
         }
+            
     }
     
     cell.likeBtn.tag = indexPath.row;
@@ -345,7 +343,7 @@
 -(NSURLRequest *)getPropertySearchNSURLRequest{
     
     // the server url to which the image (or the media) is uploaded. Use your server url here
-    NSURL* requestURL = [NSURL URLWithString:@"http://www.rjtmobile.com/realestate/getproperty.php?psearch&pname=&pptype=&ploc=3433433&pcatid="];
+    NSURL* requestURL = [NSURL URLWithString:@"http://www.rjtmobile.com/realestate/getproperty.php?psearch&pname=&pptype=&ploc=&pcatid="];
     
     // create request
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
