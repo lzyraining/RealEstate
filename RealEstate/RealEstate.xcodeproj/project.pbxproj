@@ -44,6 +44,11 @@
 		03CC4E1F1D428F3400A984DD /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4E1D1D428F3400A984DD /* login.png */; };
 		3083678F1D415F050024767C /* newPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3083678E1D415F050024767C /* newPostViewController.m */; };
 		30A5F40F1D42C2DA00C330D6 /* typePopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A5F40E1D42C2DA00C330D6 /* typePopoverViewController.m */; };
+		30A5F41F1D42CE0700C330D6 /* flat.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A5F41A1D42CE0700C330D6 /* flat.png */; };
+		30A5F4201D42CE0700C330D6 /* office.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A5F41B1D42CE0700C330D6 /* office.png */; };
+		30A5F4211D42CE0700C330D6 /* plot.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A5F41C1D42CE0700C330D6 /* plot.png */; };
+		30A5F4221D42CE0700C330D6 /* house.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A5F41D1D42CE0700C330D6 /* house.png */; };
+		30A5F4231D42CE0700C330D6 /* villa.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A5F41E1D42CE0700C330D6 /* villa.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -100,6 +105,11 @@
 		3083678E1D415F050024767C /* newPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newPostViewController.m; sourceTree = "<group>"; };
 		30A5F40D1D42C2DA00C330D6 /* typePopoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = typePopoverViewController.h; sourceTree = "<group>"; };
 		30A5F40E1D42C2DA00C330D6 /* typePopoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = typePopoverViewController.m; sourceTree = "<group>"; };
+		30A5F41A1D42CE0700C330D6 /* flat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flat.png; sourceTree = "<group>"; };
+		30A5F41B1D42CE0700C330D6 /* office.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = office.png; sourceTree = "<group>"; };
+		30A5F41C1D42CE0700C330D6 /* plot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plot.png; sourceTree = "<group>"; };
+		30A5F41D1D42CE0700C330D6 /* house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = house.png; sourceTree = "<group>"; };
+		30A5F41E1D42CE0700C330D6 /* villa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = villa.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +221,11 @@
 				03CC4DC81D41187400A984DD /* photo_not_ava.jpg */,
 				03CC4DC61D41111E00A984DD /* real_estate.png */,
 				03CC4DC41D41070400A984DD /* sp.jpg */,
+				30A5F41A1D42CE0700C330D6 /* flat.png */,
+				30A5F41B1D42CE0700C330D6 /* office.png */,
+				30A5F41C1D42CE0700C330D6 /* plot.png */,
+				30A5F41D1D42CE0700C330D6 /* house.png */,
+				30A5F41E1D42CE0700C330D6 /* villa.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -310,16 +325,21 @@
 				03CC4E191D428D1B00A984DD /* password.png in Resources */,
 				03CC4DC71D41111E00A984DD /* real_estate.png in Resources */,
 				03CC4E061D41A58200A984DD /* compass.png in Resources */,
+				30A5F4201D42CE0700C330D6 /* office.png in Resources */,
 				03CC4E0D1D427D4000A984DD /* litle.png in Resources */,
 				03CC4DCC1D411F1900A984DD /* heart.png in Resources */,
 				03CC4DAE1D406D3900A984DD /* MyMapView.xib in Resources */,
+				30A5F41F1D42CE0700C330D6 /* flat.png in Resources */,
 				03CC4DB31D406DE900A984DD /* MyTableView.xib in Resources */,
 				03CC4DB91D40795A00A984DD /* MyTableViewCell.xib in Resources */,
 				03CC4DC51D41070400A984DD /* sp.jpg in Resources */,
 				03CC4DCD1D411F1900A984DD /* like.png in Resources */,
+				30A5F4231D42CE0700C330D6 /* villa.png in Resources */,
+				30A5F4221D42CE0700C330D6 /* house.png in Resources */,
 				03CC4DC91D41187400A984DD /* photo_not_ava.jpg in Resources */,
 				03CC4E1B1D428DA200A984DD /* email.png in Resources */,
 				03CC4E161D428BB000A984DD /* radio_unsel.png in Resources */,
+				30A5F4211D42CE0700C330D6 /* plot.png in Resources */,
 				03CC4D801D40147200A984DD /* Main.storyboard in Resources */,
 				03CC4E0F1D427D5C00A984DD /* water.png in Resources */,
 				03CC4E1E1D428F3400A984DD /* signup.png in Resources */,

@@ -133,7 +133,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="55"/>
                                 <color key="backgroundColor" red="0.35294117650000001" green="0.80392156859999997" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qdp-kt-66R">
@@ -170,7 +170,7 @@
                                 <rect key="frame" x="0.0" y="619" width="375" height="48"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MJ9-4s-hia">
@@ -200,7 +200,7 @@
                                 <attributedString key="attributedText">
                                     <fragment content="Home">
                                         <attributes>
-                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="20" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
@@ -558,20 +558,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="279" height="180"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ryl-51-0EU">
-                                <rect key="frame" x="35" y="44" width="49" height="30"/>
-                                <state key="normal" title="Plot"/>
-                                <connections>
-                                    <action selector="plot_Tapped:" destination="CfD-wJ-Li9" eventType="touchUpInside" id="r5s-G1-h6l"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="102" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTX-A0-AMA">
-                                <rect key="frame" x="114" y="44" width="50" height="30"/>
-                                <state key="normal" title="Flat"/>
-                                <connections>
-                                    <action selector="flat_Tapped:" destination="CfD-wJ-Li9" eventType="touchUpInside" id="pnj-zl-pOk"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" tag="104" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wK9-JP-LSF">
                                 <rect key="frame" x="38" y="111" width="42" height="30"/>
                                 <state key="normal" title="Office"/>
@@ -593,6 +579,20 @@
                                     <action selector="house_Tapped:" destination="CfD-wJ-Li9" eventType="touchUpInside" id="nZQ-nH-NuR"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPG-r2-g9Q">
+                                <rect key="frame" x="34" y="44" width="30" height="30"/>
+                                <state key="normal" backgroundImage="plot.png"/>
+                                <connections>
+                                    <action selector="plot_Tapped:" destination="CfD-wJ-Li9" eventType="touchUpInside" id="jwJ-yc-faB"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="102" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fTX-A0-AMA">
+                                <rect key="frame" x="114" y="40" width="36" height="41"/>
+                                <state key="normal" title="Flat" backgroundImage="flat.png"/>
+                                <connections>
+                                    <action selector="flat_Tapped:" destination="CfD-wJ-Li9" eventType="touchUpInside" id="pnj-zl-pOk"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -603,7 +603,7 @@
                         <outlet property="flat_outlet" destination="fTX-A0-AMA" id="0y6-lS-N9Z"/>
                         <outlet property="house_outlet" destination="qUJ-kL-T1o" id="uTJ-zX-bH9"/>
                         <outlet property="office_outlet" destination="wK9-JP-LSF" id="CC1-Q9-Djd"/>
-                        <outlet property="plot_outlet" destination="Ryl-51-0EU" id="KgB-gf-be7"/>
+                        <outlet property="plot_outlet" destination="bPG-r2-g9Q" id="nFO-KX-qfP"/>
                         <outlet property="villa_outlet" destination="8IC-Jd-YUl" id="ftg-QB-pUP"/>
                     </connections>
                 </viewController>
@@ -827,9 +827,11 @@
     <resources>
         <image name="compass.png" width="32" height="32"/>
         <image name="email.png" width="50" height="50"/>
+        <image name="flat.png" width="512" height="512"/>
         <image name="litle.png" width="707" height="121"/>
         <image name="login.png" width="302" height="40"/>
         <image name="password.png" width="50" height="50"/>
+        <image name="plot.png" width="512" height="512"/>
         <image name="radio_sel.png" width="50" height="50"/>
         <image name="radio_unsel.png" width="50" height="50"/>
         <image name="signup.png" width="322" height="40"/>
