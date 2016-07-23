@@ -55,7 +55,7 @@
     _myFavoriteArray = [[NSMutableArray alloc] init];
 
     _appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    [self fetchMyFavoriteListFromCoreData];
+    
     
     
     NSUserDefaults *userDefault = [[NSUserDefaults alloc] init];
@@ -85,6 +85,11 @@
     
     [_locationManager requestWhenInUseAuthorization];
     
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [self fetchMyFavoriteListFromCoreData];
+    [self.myTableView.tbView reloadData];
 }
 
 -(void)fetchMyFavoriteListFromCoreData {
