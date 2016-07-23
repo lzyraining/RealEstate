@@ -17,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *categoryLbl;
 @property (weak, nonatomic) IBOutlet UILabel *addDateLbl;
 @property (weak, nonatomic) IBOutlet UITextView *descrip;
+@property (weak, nonatomic) IBOutlet UIButton *heartBtn;
+@property (weak, nonatomic) IBOutlet UIButton *shareBtn;
+@property (weak, nonatomic) IBOutlet UIButton *contactSellerBtn;
 
 
 @end

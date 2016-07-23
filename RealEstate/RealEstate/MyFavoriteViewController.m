@@ -9,11 +9,20 @@
 #import "MyFavoriteViewController.h"
 #import "AppDelegate.h"
 #import "MyFavorCollectionViewCell.h"
+#import "ContactSellerViewController.h"
+
 
 @interface MyFavoriteViewController ()
 
 - (IBAction)backBtn_tapped:(id)sender;
 @property (weak, nonatomic) IBOutlet UICollectionView *myFavoriteCollection;
+
+- (IBAction)heartBtn_tapped:(id)sender;
+- (IBAction)shareBtn_tapped:(id)sender;
+- (IBAction)contactSellerBtn_tapped:(id)sender;
+
+
+
 
 @property (strong, nonatomic) NSMutableArray *myFavoriteArray;
 @property (strong, nonatomic) AppDelegate *appdelegate;
@@ -82,6 +91,9 @@
         cell.priceLbl.text = [NSString stringWithFormat:@"$%@",property.cost];
     }
     cell.descrip.text = property.descri;
+    cell.heartBtn.tag = indexPath.row;
+    cell.shareBtn.tag = indexPath.row;
+    cell.contactSellerBtn.tag = indexPath.row;
     
     dispatch_queue_t queque = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
     dispatch_sync(queque, ^{
@@ -113,5 +125,63 @@
 
 - (IBAction)backBtn_tapped:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)heartBtn_tapped:(id)sender {
+    UIButton *btn = (UIButton*)sender;
+    UIAlertController *controller = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Delete the propert from your favorite list?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *deleteAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        Property *property = [_myFavoriteArray objectAtIndex:btn.tag];
+        [_appdelegate.managedObjectContext deleteObject:property];
+        NSError *deleteError;
+        if (![_appdelegate.managedObjectContext save:&deleteError]) {
+            NSLog(@"Delete property error: %@",[deleteError description]);
+        }
+        [_myFavoriteArray removeObjectAtIndex:btn.tag];
+        [self.myFavoriteCollection reloadData];
+    }];
+    [controller addAction:cancelAction];
+    [controller addAction:deleteAction];
+    [self presentViewController:controller animated:YES completion:nil];
+}
+
+- (IBAction)shareBtn_tapped:(id)sender {
+    
+    UIButton *btn = (UIButton*)sender;
+    
+    Property *property = [_myFavoriteArray objectAtIndex:btn.tag];
+    
+    NSString *address1 = property.address1;
+    NSString *address2 = property.address2;
+    NSString *typeAndSize = [NSString stringWithFormat:@"%@, %@",property.type,property.size];
+    NSString *category = property.category;
+    NSString *categoryType = @"";
+    NSString *price = @"";
+    if ([category isEqualToString:@"1"]) {
+        categoryType = @"For Rent";
+        price = [NSString stringWithFormat:@"$%@/mo",property.cost];
+    }
+    else {
+        categoryType = @"For Sale";
+        price = [NSString stringWithFormat:@"$%@",property.cost];
+    }
+    NSString *decrip = property.descri;
+    
+    NSArray *shared = @[[NSString stringWithFormat:@"Address: %@, %@",address1, address2],typeAndSize,categoryType,price,decrip];
+    UIActivityViewController *activity = [[UIActivityViewController alloc] initWithActivityItems:shared applicationActivities:nil];
+    NSArray *excludeArr = @[UIActivityTypePrint, UIActivityTypeOpenInIBooks, UIActivityTypePostToWeibo];
+    activity.excludedActivityTypes = excludeArr;
+    [self presentViewController:activity animated:YES completion:nil];
+    
+}
+
+- (IBAction)contactSellerBtn_tapped:(id)sender {
+    UIButton *btn = (UIButton*)sender;
+    ContactSellerViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"ContactSellerViewController"];
+    Property *property = [_myFavoriteArray objectAtIndex:btn.tag];
+    controller.sellerId = property.sellerUid;
+    [self presentViewController:controller animated:YES completion:nil];
 }
 @end

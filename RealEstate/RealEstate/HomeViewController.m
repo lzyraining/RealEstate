@@ -30,6 +30,8 @@
 
 - (IBAction)getMyLocationBtn_tapped:(id)sender;
 
+- (IBAction)filterBtn_tapped:(id)sender;
+
 
 @property (strong, nonatomic) NSArray *propertListDataArray;
 @property (strong, nonatomic) NSMutableArray *propertyListPresentArray;
@@ -160,6 +162,9 @@
 - (IBAction)getMyLocationBtn_tapped:(id)sender {
     _zipCodeTextField.text = @"";
     [_locationManager startUpdatingLocation];
+}
+
+- (IBAction)filterBtn_tapped:(id)sender {
 }
 
 #pragma mark- MapView Delegate Method
@@ -343,7 +348,7 @@
 -(NSURLRequest *)getPropertySearchNSURLRequest{
     
     // the server url to which the image (or the media) is uploaded. Use your server url here
-    NSURL* requestURL = [NSURL URLWithString:@"http://www.rjtmobile.com/realestate/getproperty.php?psearch&pname=&pptype=&ploc=&pcatid="];
+    NSURL* requestURL = [NSURL URLWithString:@"http://www.rjtmobile.com/realestate/getproperty.php?all"];
     
     // create request
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
