@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import "FilterViewController.h"
 #import "filterObject.h"
+#import "DetailsViewController.h"
 
 @interface HomeViewController () <UIPopoverPresentationControllerDelegate, filterObjectProtocol>
 
@@ -260,6 +261,16 @@
     return nil;
 }
 
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view NS_AVAILABLE(10_9, 4_0) {
+    NSRange coma = [view.annotation.subtitle rangeOfString:@":"];
+    NSString *string = [view.annotation.subtitle substringFromIndex:3];
+    string = [string substringToIndex:coma.location-3];
+    
+    DetailsViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailsViewController"];
+    controller.propertyId = string;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
 -(void)reverseGeoCoder:(NSString*) zipcode {
     CLGeocoder *zipGeocoder = [[CLGeocoder alloc] init];
     [zipGeocoder geocodeAddressString:zipcode completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
@@ -301,8 +312,8 @@
                 MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
                 point.coordinate = placemark.coordinate;
                 point.title = [dict valueForKey:@"Property Name"];
-                point.subtitle = [dict valueForKey:@"Property Cost"];
-                
+                point.subtitle = [NSString stringWithFormat:@"Id %@: Cost %@",[dict valueForKey:@"Property Id"],[dict valueForKey:@"Property Cost"]];
+    
                 [_annotationArr addObject:point];
                 
                 [self.myMapView.mpView addAnnotation:point];

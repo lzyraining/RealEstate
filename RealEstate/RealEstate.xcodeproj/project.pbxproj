@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		035695F81D450F2A00F41B1C /* marker.png in Resources */ = {isa = PBXBuildFile; fileRef = 035695F71D450F2A00F41B1C /* marker.png */; };
+		035695FB1D45226F00F41B1C /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 035695FA1D45226F00F41B1C /* DetailsViewController.m */; };
 		03A3F20A1D443BB600E9BB86 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F2091D443BB600E9BB86 /* FilterViewController.m */; };
 		03A3F20C1D4445D100E9BB86 /* filter_confirm.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A3F20B1D4445D100E9BB86 /* filter_confirm.png */; };
 		03A3F2141D444B0900E9BB86 /* filterObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F2131D444B0900E9BB86 /* filterObject.m */; };
@@ -61,6 +62,8 @@
 
 /* Begin PBXFileReference section */
 		035695F71D450F2A00F41B1C /* marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker.png; sourceTree = "<group>"; };
+		035695F91D45226F00F41B1C /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		035695FA1D45226F00F41B1C /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
 		03A3F2081D443BB600E9BB86 /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
 		03A3F2091D443BB600E9BB86 /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
 		03A3F20B1D4445D100E9BB86 /* filter_confirm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter_confirm.png; sourceTree = "<group>"; };
@@ -261,6 +264,8 @@
 			children = (
 				03CC4D951D402C9600A984DD /* HomeViewController.h */,
 				03CC4D961D402C9600A984DD /* HomeViewController.m */,
+				035695F91D45226F00F41B1C /* DetailsViewController.h */,
+				035695FA1D45226F00F41B1C /* DetailsViewController.m */,
 				03A3F2081D443BB600E9BB86 /* FilterViewController.h */,
 				03A3F2091D443BB600E9BB86 /* FilterViewController.m */,
 				03A3F2121D444B0900E9BB86 /* filterObject.h */,
@@ -399,6 +404,7 @@
 				03CC4D831D40147200A984DD /* RealEstate.xcdatamodeld in Sources */,
 				3083678F1D415F050024767C /* newPostViewController.m in Sources */,
 				03CC4D7A1D40147200A984DD /* AppDelegate.m in Sources */,
+				035695FB1D45226F00F41B1C /* DetailsViewController.m in Sources */,
 				03A3F20A1D443BB600E9BB86 /* FilterViewController.m in Sources */,
 				03CC4DAC1D406D1400A984DD /* MyMapView.m in Sources */,
 				03CC4D771D40147200A984DD /* main.m in Sources */,
