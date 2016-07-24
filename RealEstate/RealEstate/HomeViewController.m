@@ -44,6 +44,7 @@
 
 @property (strong, nonatomic) filterObject *fObject;
 
+@property (strong, nonatomic) NSMutableArray *annotationArr;
 
 @end
 
@@ -60,6 +61,8 @@
     _appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     
     _fObject = [[filterObject alloc] init];
+    
+    _annotationArr = [[NSMutableArray alloc] init];
     
     NSUserDefaults *userDefault = [[NSUserDefaults alloc] init];
     _uid = [userDefault valueForKey:@"kUid"];
@@ -87,13 +90,15 @@
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
     [_locationManager requestWhenInUseAuthorization];
+    [_locationManager startUpdatingLocation];
     
 }
 
 -(void)viewWillAppear:(BOOL)animated {
-    
+    [self callPropertySearchApi];
     [self fetchMyFavoriteListFromCoreData];
     [self.myTableView.tbView reloadData];
+    
 }
 
 -(void)fetchMyFavoriteListFromCoreData {
@@ -147,8 +152,9 @@
                         animations:^{
                             [self.myMapView removeFromSuperview];
                             [self.presentView addSubview:self.myTableView];
-                            [self callPropertySearchApi];
-                        } completion:nil];
+                        } completion:^(BOOL finished) {
+                            [self.myTableView.tbView reloadData];
+                        }];
 
     }
     else {
@@ -158,7 +164,9 @@
                         animations:^{
                             [self.myTableView removeFromSuperview];
                             [self.presentView addSubview:self.myMapView];
-                        } completion:nil];
+                        } completion:^(BOOL finished) {
+                            [self showPropertyInMap];
+                        }];
         
     }
 }
@@ -171,6 +179,7 @@
 - (IBAction)getMyLocationBtn_tapped:(id)sender {
     _zipCodeTextField.text = @"";
     [_locationManager startUpdatingLocation];
+    [self callPropertySearchApi];
 }
 
 
@@ -206,8 +215,10 @@
 }
 
 -(void)submitFilterContidiotn {
-    NSLog(@"%@, %@, %@, %@, %@", _fObject.type, _fObject.category, _fObject.costMin, _fObject.costMax, _fObject.address);
     [self callPropertySearchApi];
+    if(self.myMapView) {
+        [self showPropertyInMap];
+    }
 }
 
 
@@ -229,9 +240,29 @@
     }
 }
 
--(void)reverseGeoCoder:(NSString*) addressStr {
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    static NSString *identifier = @"MKMapItem";
+    if ([annotation isKindOfClass:[MKPointAnnotation class]]) {
+        
+        MKAnnotationView *annotationView = (MKAnnotationView *) [self.myMapView.mpView dequeueReusableAnnotationViewWithIdentifier:identifier];
+        if (annotationView == nil) {
+            annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+        } else {
+            annotationView.annotation = annotation;
+        }
+        
+        annotationView.enabled = YES;
+        annotationView.canShowCallout = YES;
+        annotationView.image=[UIImage imageNamed:@"marker"];//here we use a nice image instead of the default pins
+        annotationView.draggable = YES;
+        return annotationView;
+    }
+    return nil;
+}
+
+-(void)reverseGeoCoder:(NSString*) zipcode {
     CLGeocoder *zipGeocoder = [[CLGeocoder alloc] init];
-    [zipGeocoder geocodeAddressString:addressStr completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+    [zipGeocoder geocodeAddressString:zipcode completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
         if (!error) {
             if (placemarks && [placemarks count]>0) {
                 CLPlacemark *place = [placemarks lastObject];
@@ -254,6 +285,47 @@
         }
     }];
 }
+
+
+-(void)reverseAddressGeocoder: (NSString*)address andInfo: (NSDictionary*) dict{
+
+    _annotationArr = [[NSMutableArray alloc] init];
+    
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder geocodeAddressString:address completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        if (!error) {
+            if (placemarks && [placemarks count]>0) {
+                CLPlacemark *place = [placemarks lastObject];
+                MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:place];
+                
+                MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+                point.coordinate = placemark.coordinate;
+                point.title = [dict valueForKey:@"Property Name"];
+                point.subtitle = [dict valueForKey:@"Property Cost"];
+                
+                [_annotationArr addObject:point];
+                
+                [self.myMapView.mpView addAnnotation:point];
+            }
+        }
+        else {
+            NSLog(@"Error: %@",[error description]);
+        }
+    }];
+}
+
+-(void)showPropertyInMap {
+    
+    if ([_annotationArr count]) {
+        [self.myMapView.mpView removeAnnotations:_annotationArr];
+    }
+
+    for (NSDictionary *propertyDict in _propertyListPresentArray ) {
+        NSString *addressString = [NSString stringWithFormat:@"%@, %@",[propertyDict valueForKey:@"Property Address1"],[propertyDict valueForKey:@"Property Address2"]];
+        [self reverseAddressGeocoder:addressString andInfo:propertyDict];
+    }
+}
+
 
 #pragma mark- TableView Delegate Method
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -299,7 +371,6 @@
         }
             
     }
-    
     cell.likeBtn.tag = indexPath.row;
     cell.delegate = self;
     
@@ -366,7 +437,9 @@
     
     [self reverseGeoCoder:textField.text];
     [self callPropertySearchApi];
-    
+    if (self.myMapView) {
+        [self showPropertyInMap];
+    }
     [textField resignFirstResponder];
     return YES;
 }// called when 'return' key pressed. return NO to ignore.
@@ -381,7 +454,7 @@
             id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
             _propertyListPresentArray = [[NSMutableArray alloc] init];
             dispatch_sync(dispatch_get_main_queue(), ^{
-                _propertListDataArray = json;
+            _propertListDataArray = [[NSArray alloc] initWithArray:json];
                 
                 if ([_fObject.address length]) {
                     

@@ -166,7 +166,9 @@
                                 <rect key="frame" x="327" y="63" width="35" height="30"/>
                                 <state key="normal" title="Filter"/>
                                 <connections>
-                                    <action selector="filterBtn_tapped:" destination="lFO-ho-SnI" eventType="touchUpInside" id="uDk-Tl-S2B"/>
+                                    <segue destination="aMt-Cw-BTZ" kind="popoverPresentation" identifier="filterPopover" popoverAnchorView="Jng-iZ-87a" id="kmN-KT-1Mq">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COR-Xc-QS3">
@@ -226,6 +228,171 @@
             </objects>
             <point key="canvasLocation" x="1112.5" y="1072.5"/>
         </scene>
+        <!--Filter View Controller-->
+        <scene sceneID="vNb-RE-POE">
+            <objects>
+                <viewController storyboardIdentifier="FilterViewController" id="aMt-Cw-BTZ" customClass="FilterViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="7aE-sG-fho"/>
+                        <viewControllerLayoutGuide type="bottom" id="8zJ-T0-aRA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ykx-cQ-2Fk">
+                        <rect key="frame" x="0.0" y="0.0" width="325" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="For Rent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JUz-rh-JfS">
+                                <rect key="frame" x="61" y="143" width="65" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="For Sale" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zHL-3B-zSm">
+                                <rect key="frame" x="204" y="143" width="63" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkO-X0-C8e">
+                                <rect key="frame" x="108" y="351" width="109" height="35"/>
+                                <state key="normal" backgroundImage="filter_confirm.png"/>
+                                <connections>
+                                    <action selector="confirmBtn_tapped:" destination="aMt-Cw-BTZ" eventType="touchUpInside" id="eiB-K6-xdR"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="From" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yRL-Yr-VRm">
+                                <rect key="frame" x="20" y="206" width="40" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7CP-ev-IPU">
+                                <rect key="frame" x="61" y="202" width="110" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="To" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NSw-cL-6B7">
+                                <rect key="frame" x="171" y="206" width="19" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fXv-t0-JdJ">
+                                <rect key="frame" x="193" y="202" width="110" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fHR-B8-asg">
+                                <rect key="frame" x="9" y="20" width="80" height="28"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Type">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="20" name="ChalkboardSE-Regular"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ov0-V6-9gZ">
+                                <rect key="frame" x="8" y="102" width="82" height="29"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Category">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="20" name="ChalkboardSE-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jdJ-dz-h3c">
+                                <rect key="frame" x="9" y="169" width="39" height="29"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Cost">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="20" name="ChalkboardSE-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fAg-rv-uF7">
+                                <rect key="frame" x="30" y="139" width="30" height="30"/>
+                                <state key="normal" backgroundImage="radio_unsel.png"/>
+                                <state key="selected" backgroundImage="radio_sel.png"/>
+                                <connections>
+                                    <action selector="categoryTypeBtn_tapped:" destination="aMt-Cw-BTZ" eventType="touchUpInside" id="xOw-aG-Dpz"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vv-bY-BFe">
+                                <rect key="frame" x="173" y="139" width="30" height="30"/>
+                                <state key="normal" backgroundImage="radio_unsel.png"/>
+                                <state key="selected" backgroundImage="radio_sel.png"/>
+                                <connections>
+                                    <action selector="categoryTypeBtn_tapped:" destination="aMt-Cw-BTZ" eventType="touchUpInside" id="Znp-Yb-y6F"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9p-9H-Nbl">
+                                <rect key="frame" x="8" y="235" width="71" height="29"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Address">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="20" name="ChalkboardSE-Regular"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="hG9-E6-EnV">
+                                <rect key="frame" x="20" y="264" width="285" height="73"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f4d-Vg-f1g">
+                                <rect key="frame" x="262" y="23" width="36" height="30"/>
+                                <state key="normal" title="Clear"/>
+                                <connections>
+                                    <action selector="clearBtn_tapped:" destination="aMt-Cw-BTZ" eventType="touchUpInside" id="QQ1-LL-7Kq"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1ie-TJ-lfU">
+                                <rect key="frame" x="14" y="66" width="296" height="29"/>
+                                <color key="backgroundColor" red="1" green="0.55556305269999995" blue="0.64348443990000004" alpha="1" colorSpace="calibratedRGB"/>
+                                <segments>
+                                    <segment title="Any"/>
+                                    <segment title="Plot"/>
+                                    <segment title="Flat"/>
+                                    <segment title="House"/>
+                                    <segment title="Offices"/>
+                                    <segment title="Villa"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" red="0.35294117650000001" green="0.80392156859999997" blue="0.59215686270000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="325" height="400"/>
+                    <connections>
+                        <outlet property="addressText" destination="hG9-E6-EnV" id="upq-xl-LFe"/>
+                        <outlet property="costFromTextField" destination="7CP-ev-IPU" id="vqO-c0-gZU"/>
+                        <outlet property="costToTextField" destination="fXv-t0-JdJ" id="EnN-x3-Yd6"/>
+                        <outlet property="rentBtn" destination="fAg-rv-uF7" id="dmY-Sy-gJp"/>
+                        <outlet property="saleBtn" destination="5vv-bY-BFe" id="R4X-fF-dmA"/>
+                        <outlet property="typeSeg" destination="1ie-TJ-lfU" id="kYO-xZ-UrP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LH0-Tz-Mty" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="726.5" y="1053"/>
+        </scene>
         <!--My Favorite View Controller-->
         <scene sceneID="YHp-nI-A8M">
             <objects>
@@ -259,6 +426,7 @@
                                         <rect key="frame" x="0.0" y="-1" width="375" height="610"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="610"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXk-NH-gPO">
@@ -499,6 +667,7 @@
                     <navigationItem key="navigationItem" id="0bD-lK-0Q2"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="contactTextView" destination="Y4M-pa-eoe" id="KIi-5Y-mWf"/>
                         <outlet property="emailTextField" destination="M7y-Bs-VZY" id="Gbl-OZ-c2u"/>
                         <outlet property="nameTextField" destination="jhq-Dt-F56" id="Bbb-ns-m95"/>
                         <outlet property="phoneTextField" destination="rhv-5R-wrs" id="EEm-Z4-jNH"/>
@@ -969,7 +1138,9 @@
         <image name="contact_manager.png" width="305" height="40"/>
         <image name="contact_seller.png" width="188" height="45"/>
         <image name="email.png" width="50" height="50"/>
+        <image name="filter_confirm.png" width="114" height="40"/>
         <image name="flat.png" width="512" height="512"/>
+        <image name="like.png" width="32" height="32"/>
         <image name="litle.png" width="707" height="121"/>
         <image name="login.png" width="302" height="40"/>
         <image name="password.png" width="50" height="50"/>
