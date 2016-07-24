@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 - (IBAction)contactBtn_tapped:(id)sender;
 - (IBAction)backBtn_tapped:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextView *contactTextView;
 
 @end
 
@@ -40,6 +41,13 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [_nameTextField resignFirstResponder];
+    [_phoneTextField resignFirstResponder];
+    [_emailTextField resignFirstResponder];
+    [_contactTextView resignFirstResponder];
+}
 
 - (IBAction)contactBtn_tapped:(id)sender {
     [self contactSellerApi];

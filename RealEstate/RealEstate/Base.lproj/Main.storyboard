@@ -259,7 +259,6 @@
                                         <rect key="frame" x="0.0" y="-1" width="375" height="610"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="611"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXk-NH-gPO">
@@ -970,7 +969,6 @@
         <image name="contact_manager.png" width="305" height="40"/>
         <image name="contact_seller.png" width="188" height="45"/>
         <image name="email.png" width="50" height="50"/>
-        <image name="like.png" width="32" height="32"/>
         <image name="flat.png" width="512" height="512"/>
         <image name="litle.png" width="707" height="121"/>
         <image name="login.png" width="302" height="40"/>

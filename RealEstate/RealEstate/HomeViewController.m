@@ -11,8 +11,10 @@
 #import "MyTableView.h"
 #import "MyFavoriteViewController.h"
 #import "AppDelegate.h"
+#import "FilterViewController.h"
+#import "filterObject.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () <UIPopoverPresentationControllerDelegate, filterObjectProtocol>
 
 @property (weak, nonatomic) IBOutlet UIButton *myPostBtn;
 - (IBAction)myPostBtn_tapped:(id)sender;
@@ -30,9 +32,6 @@
 
 - (IBAction)getMyLocationBtn_tapped:(id)sender;
 
-- (IBAction)filterBtn_tapped:(id)sender;
-
-
 @property (strong, nonatomic) NSArray *propertListDataArray;
 @property (strong, nonatomic) NSMutableArray *propertyListPresentArray;
 @property (strong, nonatomic) NSMutableArray *myFavoriteArray;
@@ -40,6 +39,10 @@
 @property (strong, nonatomic) AppDelegate *appdelegate;
 
 @property(strong, nonatomic) CLLocationManager *locationManager;
+
+@property (nonatomic, strong) FilterViewController *filterPopover;
+
+@property (strong, nonatomic) filterObject *fObject;
 
 
 @end
@@ -56,7 +59,7 @@
 
     _appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     
-    
+    _fObject = [[filterObject alloc] init];
     
     NSUserDefaults *userDefault = [[NSUserDefaults alloc] init];
     _uid = [userDefault valueForKey:@"kUid"];
@@ -88,6 +91,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    
     [self fetchMyFavoriteListFromCoreData];
     [self.myTableView.tbView reloadData];
 }
@@ -169,8 +173,43 @@
     [_locationManager startUpdatingLocation];
 }
 
-- (IBAction)filterBtn_tapped:(id)sender {
+
+#pragma mark- PopOver View Method
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if ([segue.identifier isEqualToString:@"filterPopover"]) {
+        self.filterPopover = [segue destinationViewController];
+        self.filterPopover.popoverPresentationController.delegate = self;
+        self.filterPopover.fObject = _fObject;
+        self.filterPopover.delegate = self;
+        
+        if ([sender isKindOfClass:UIView.class]) {
+            // Fetch the destination view controller
+            UIViewController *destinationViewController = [segue destinationViewController];
+        
+            // If there is indeed a UIPopoverPresentationController involved
+            if ([destinationViewController respondsToSelector:@selector(popoverPresentationController)]) {
+                // Fetch the popover presentation controller
+                UIPopoverPresentationController *popoverPresentationController =
+                destinationViewController.popoverPresentationController;
+                
+                // Set the correct sourceRect given the sender's bounds
+                popoverPresentationController.sourceRect = ((UIView *)sender).bounds;
+            }
+        }
+        
+    }
 }
+
+-(UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller{
+    return UIModalPresentationNone;
+}
+
+-(void)submitFilterContidiotn {
+    NSLog(@"%@, %@, %@, %@, %@", _fObject.type, _fObject.category, _fObject.costMin, _fObject.costMax, _fObject.address);
+    [self callPropertySearchApi];
+}
+
 
 #pragma mark- MapView Delegate Method
 
@@ -340,9 +379,46 @@
     [[[NSURLSession sharedSession] dataTaskWithRequest:[self getPropertySearchNSURLRequest] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
             id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+            _propertyListPresentArray = [[NSMutableArray alloc] init];
             dispatch_sync(dispatch_get_main_queue(), ^{
                 _propertListDataArray = json;
-                _propertyListPresentArray = [NSMutableArray arrayWithArray:_propertListDataArray];
+                
+                if ([_fObject.address length]) {
+                    
+                    for (NSDictionary *propertyDict in _propertListDataArray) {
+                        NSString *addressString = [NSString stringWithFormat:@"%@, %@",[propertyDict valueForKey:@"Property Address1"],[propertyDict valueForKey:@"Property Address2"]];
+                        if ([addressString isEqualToString:_fObject.address]) {
+                            [_propertyListPresentArray addObject:propertyDict];
+                        }
+                    }
+                    
+                }
+                else {
+                    if (![_fObject.costMin length] && ![_fObject.costMax length]) {
+                       _propertyListPresentArray = [NSMutableArray arrayWithArray:_propertListDataArray];
+                    }
+                    else if ([_fObject.costMin length] && ![_fObject.costMax length]) {
+                        for (NSDictionary *propertyDict in _propertListDataArray) {
+                            if ([[propertyDict valueForKey:@"Property Cost"] doubleValue] >= [_fObject.costMin doubleValue]) {
+                                [_propertyListPresentArray addObject:propertyDict];
+                            }
+                        }
+                    }
+                    else if ([_fObject.costMin length] && ![_fObject.costMax length]) {
+                        for (NSDictionary *propertyDict in _propertListDataArray) {
+                            if ([[propertyDict valueForKey:@"Property Cost"] doubleValue] <= [_fObject.costMax doubleValue]) {
+                                [_propertyListPresentArray addObject:propertyDict];
+                            }
+                        }
+                    }
+                    else {
+                        for (NSDictionary *propertyDict in _propertListDataArray) {
+                            if ([[propertyDict valueForKey:@"Property Cost"] doubleValue] >= [_fObject.costMin doubleValue] && [[propertyDict valueForKey:@"Property Cost"] doubleValue] <= [_fObject.costMax doubleValue] ) {
+                                [_propertyListPresentArray addObject:propertyDict];
+                            }
+                        }
+                    }
+                }
                 [self fetchMyFavoriteListFromCoreData];
                 [self.myTableView.tbView reloadData];
             });
@@ -352,8 +428,17 @@
 
 -(NSURLRequest *)getPropertySearchNSURLRequest{
     
+    NSURL *requestURL = [NSURL alloc];
+    
+    if ([_fObject.address length]) {
+        requestURL = [NSURL URLWithString:@"http://www.rjtmobile.com/realestate/getproperty.php?all"];
+    }
+    else {
+        requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.rjtmobile.com/realestate/getproperty.php?psearch&pname=&pptype=%@&ploc=%@&pcatid=%@",_fObject.type,_zipCodeTextField.text,_fObject.category]];
+    }
+    
+    NSLog(@"%@",requestURL);
     // the server url to which the image (or the media) is uploaded. Use your server url here
-    NSURL* requestURL = [NSURL URLWithString:@"http://www.rjtmobile.com/realestate/getproperty.php?all"];
     
     // create request
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
