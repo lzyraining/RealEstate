@@ -8,10 +8,25 @@
 
 #import "MyPostViewController.h"
 #import "newPostViewController.h"
+#import <MapKit/MapKit.h>
 
-@interface MyPostViewController ()
+
+@interface MyPostViewController () <CLLocationManagerDelegate>
+{
+
+    CLGeocoder *geocoder;
+    NSString *addr;
+
+}
 - (IBAction)backBtn_Tapped:(UIButton *)sender;
 - (IBAction)prpCorrectBtn_Tapped:(UIButton *)sender;
+- (IBAction)srchBtn_Tapped:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UITextField *addr1TF;
+@property (weak, nonatomic) IBOutlet UITextField *suitTF;
+@property (weak, nonatomic) IBOutlet UITextField *stateTF;
+@property (weak, nonatomic) IBOutlet UITextField *zipTF;
+@property (weak, nonatomic) IBOutlet MKMapView *myMap;
+
 
 @end
 
@@ -20,6 +35,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,4 +66,24 @@
     [self presentViewController:controller animated:YES completion:nil];
     
 }
+
+- (IBAction)srchBtn_Tapped:(UIButton *)sender {
+    
+    geocoder = [[CLGeocoder alloc]init];
+    [self getCoordinateByAddress:addr];
+    
+}
+
+-(void)getCoordinateByAddress:(NSString *)address{
+    
+    addr = [NSString stringWithFormat:@"%@,%@,%@,%@",self.addr1TF.text,self.suitTF.text,self.stateTF.text,self.zipTF.text];
+    [geocoder geocodeAddressString:addr completionHandler:^(NSArray *placemarks, NSError *error) {
+        CLPlacemark *placemark=[placemarks firstObject];
+        
+        CLLocation *location=placemark.location;
+        CLRegion *region=placemark.region;
+        NSDictionary *addressDic= placemark.addressDictionary;
+    }];
+}
+
 @end

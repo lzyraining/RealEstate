@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface newPostViewController : UIViewController
+@interface newPostViewController : UIViewController <UIImagePickerControllerDelegate,UINavigationControllerDelegate>
 
 @property (nonatomic, strong) NSString *prpType;
 
