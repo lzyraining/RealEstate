@@ -11,8 +11,11 @@
 #import "MyTableView.h"
 #import "MyFavoriteViewController.h"
 #import "AppDelegate.h"
+#import "FilterViewController.h"
+#import "filterObject.h"
+#import "DetailsViewController.h"
 
-@interface HomeViewController ()
+@interface HomeViewController () <UIPopoverPresentationControllerDelegate, filterObjectProtocol>
 
 @property (weak, nonatomic) IBOutlet UIButton *myPostBtn;
 - (IBAction)myPostBtn_tapped:(id)sender;
@@ -30,7 +33,6 @@
 
 - (IBAction)getMyLocationBtn_tapped:(id)sender;
 
-
 @property (strong, nonatomic) NSArray *propertListDataArray;
 @property (strong, nonatomic) NSMutableArray *propertyListPresentArray;
 @property (strong, nonatomic) NSMutableArray *myFavoriteArray;
@@ -39,6 +41,11 @@
 
 @property(strong, nonatomic) CLLocationManager *locationManager;
 
+@property (nonatomic, strong) FilterViewController *filterPopover;
+
+@property (strong, nonatomic) filterObject *fObject;
+
+@property (strong, nonatomic) NSMutableArray *annotationArr;
 
 @end
 
@@ -53,8 +60,10 @@
     _myFavoriteArray = [[NSMutableArray alloc] init];
 
     _appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    [self fetchMyFavoriteListFromCoreData];
     
+    _fObject = [[filterObject alloc] init];
+    
+    _annotationArr = [[NSMutableArray alloc] init];
     
     NSUserDefaults *userDefault = [[NSUserDefaults alloc] init];
     _uid = [userDefault valueForKey:@"kUid"];
@@ -82,6 +91,14 @@
     _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     
     [_locationManager requestWhenInUseAuthorization];
+    [_locationManager startUpdatingLocation];
+    
+}
+
+-(void)viewWillAppear:(BOOL)animated {
+    [self callPropertySearchApi];
+    [self fetchMyFavoriteListFromCoreData];
+    [self.myTableView.tbView reloadData];
     
 }
 
@@ -136,8 +153,9 @@
                         animations:^{
                             [self.myMapView removeFromSuperview];
                             [self.presentView addSubview:self.myTableView];
-                            [self callPropertySearchApi];
-                        } completion:nil];
+                        } completion:^(BOOL finished) {
+                            [self.myTableView.tbView reloadData];
+                        }];
 
     }
     else {
@@ -147,7 +165,9 @@
                         animations:^{
                             [self.myTableView removeFromSuperview];
                             [self.presentView addSubview:self.myMapView];
-                        } completion:nil];
+                        } completion:^(BOOL finished) {
+                            [self showPropertyInMap];
+                        }];
         
     }
 }
@@ -160,7 +180,48 @@
 - (IBAction)getMyLocationBtn_tapped:(id)sender {
     _zipCodeTextField.text = @"";
     [_locationManager startUpdatingLocation];
+    [self callPropertySearchApi];
 }
+
+
+#pragma mark- PopOver View Method
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    if ([segue.identifier isEqualToString:@"filterPopover"]) {
+        self.filterPopover = [segue destinationViewController];
+        self.filterPopover.popoverPresentationController.delegate = self;
+        self.filterPopover.fObject = _fObject;
+        self.filterPopover.delegate = self;
+        
+        if ([sender isKindOfClass:UIView.class]) {
+            // Fetch the destination view controller
+            UIViewController *destinationViewController = [segue destinationViewController];
+        
+            // If there is indeed a UIPopoverPresentationController involved
+            if ([destinationViewController respondsToSelector:@selector(popoverPresentationController)]) {
+                // Fetch the popover presentation controller
+                UIPopoverPresentationController *popoverPresentationController =
+                destinationViewController.popoverPresentationController;
+                
+                // Set the correct sourceRect given the sender's bounds
+                popoverPresentationController.sourceRect = ((UIView *)sender).bounds;
+            }
+        }
+        
+    }
+}
+
+-(UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller{
+    return UIModalPresentationNone;
+}
+
+-(void)submitFilterContidiotn {
+    [self callPropertySearchApi];
+    if(self.myMapView) {
+        [self showPropertyInMap];
+    }
+}
+
 
 #pragma mark- MapView Delegate Method
 
@@ -180,9 +241,39 @@
     }
 }
 
--(void)reverseGeoCoder:(NSString*) addressStr {
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    static NSString *identifier = @"MKMapItem";
+    if ([annotation isKindOfClass:[MKPointAnnotation class]]) {
+        
+        MKAnnotationView *annotationView = (MKAnnotationView *) [self.myMapView.mpView dequeueReusableAnnotationViewWithIdentifier:identifier];
+        if (annotationView == nil) {
+            annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:identifier];
+        } else {
+            annotationView.annotation = annotation;
+        }
+        
+        annotationView.enabled = YES;
+        annotationView.canShowCallout = YES;
+        annotationView.image=[UIImage imageNamed:@"marker"];//here we use a nice image instead of the default pins
+        annotationView.draggable = YES;
+        return annotationView;
+    }
+    return nil;
+}
+
+- (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view NS_AVAILABLE(10_9, 4_0) {
+    NSRange coma = [view.annotation.subtitle rangeOfString:@":"];
+    NSString *string = [view.annotation.subtitle substringFromIndex:3];
+    string = [string substringToIndex:coma.location-3];
+    
+    DetailsViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailsViewController"];
+    controller.propertyId = string;
+    [self.navigationController pushViewController:controller animated:YES];
+}
+
+-(void)reverseGeoCoder:(NSString*) zipcode {
     CLGeocoder *zipGeocoder = [[CLGeocoder alloc] init];
-    [zipGeocoder geocodeAddressString:addressStr completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+    [zipGeocoder geocodeAddressString:zipcode completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
         if (!error) {
             if (placemarks && [placemarks count]>0) {
                 CLPlacemark *place = [placemarks lastObject];
@@ -205,6 +296,47 @@
         }
     }];
 }
+
+
+-(void)reverseAddressGeocoder: (NSString*)address andInfo: (NSDictionary*) dict{
+
+    _annotationArr = [[NSMutableArray alloc] init];
+    
+    CLGeocoder *geocoder = [[CLGeocoder alloc] init];
+    [geocoder geocodeAddressString:address completionHandler:^(NSArray<CLPlacemark *> * _Nullable placemarks, NSError * _Nullable error) {
+        if (!error) {
+            if (placemarks && [placemarks count]>0) {
+                CLPlacemark *place = [placemarks lastObject];
+                MKPlacemark *placemark = [[MKPlacemark alloc] initWithPlacemark:place];
+                
+                MKPointAnnotation *point = [[MKPointAnnotation alloc] init];
+                point.coordinate = placemark.coordinate;
+                point.title = [dict valueForKey:@"Property Name"];
+                point.subtitle = [NSString stringWithFormat:@"Id %@: Cost %@",[dict valueForKey:@"Property Id"],[dict valueForKey:@"Property Cost"]];
+    
+                [_annotationArr addObject:point];
+                
+                [self.myMapView.mpView addAnnotation:point];
+            }
+        }
+        else {
+            NSLog(@"Error: %@",[error description]);
+        }
+    }];
+}
+
+-(void)showPropertyInMap {
+    
+    if ([_annotationArr count]) {
+        [self.myMapView.mpView removeAnnotations:_annotationArr];
+    }
+
+    for (NSDictionary *propertyDict in _propertyListPresentArray ) {
+        NSString *addressString = [NSString stringWithFormat:@"%@, %@",[propertyDict valueForKey:@"Property Address1"],[propertyDict valueForKey:@"Property Address2"]];
+        [self reverseAddressGeocoder:addressString andInfo:propertyDict];
+    }
+}
+
 
 #pragma mark- TableView Delegate Method
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -250,7 +382,6 @@
         }
             
     }
-    
     cell.likeBtn.tag = indexPath.row;
     cell.delegate = self;
     
@@ -317,7 +448,9 @@
     
     [self reverseGeoCoder:textField.text];
     [self callPropertySearchApi];
-    
+    if (self.myMapView) {
+        [self showPropertyInMap];
+    }
     [textField resignFirstResponder];
     return YES;
 }// called when 'return' key pressed. return NO to ignore.
@@ -330,9 +463,46 @@
     [[[NSURLSession sharedSession] dataTaskWithRequest:[self getPropertySearchNSURLRequest] completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         if (!error) {
             id json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
+            _propertyListPresentArray = [[NSMutableArray alloc] init];
             dispatch_sync(dispatch_get_main_queue(), ^{
-                _propertListDataArray = json;
-                _propertyListPresentArray = [NSMutableArray arrayWithArray:_propertListDataArray];
+            _propertListDataArray = [[NSArray alloc] initWithArray:json];
+                
+                if ([_fObject.address length]) {
+                    
+                    for (NSDictionary *propertyDict in _propertListDataArray) {
+                        NSString *addressString = [NSString stringWithFormat:@"%@, %@",[propertyDict valueForKey:@"Property Address1"],[propertyDict valueForKey:@"Property Address2"]];
+                        if ([addressString isEqualToString:_fObject.address]) {
+                            [_propertyListPresentArray addObject:propertyDict];
+                        }
+                    }
+                    
+                }
+                else {
+                    if (![_fObject.costMin length] && ![_fObject.costMax length]) {
+                       _propertyListPresentArray = [NSMutableArray arrayWithArray:_propertListDataArray];
+                    }
+                    else if ([_fObject.costMin length] && ![_fObject.costMax length]) {
+                        for (NSDictionary *propertyDict in _propertListDataArray) {
+                            if ([[propertyDict valueForKey:@"Property Cost"] doubleValue] >= [_fObject.costMin doubleValue]) {
+                                [_propertyListPresentArray addObject:propertyDict];
+                            }
+                        }
+                    }
+                    else if ([_fObject.costMin length] && ![_fObject.costMax length]) {
+                        for (NSDictionary *propertyDict in _propertListDataArray) {
+                            if ([[propertyDict valueForKey:@"Property Cost"] doubleValue] <= [_fObject.costMax doubleValue]) {
+                                [_propertyListPresentArray addObject:propertyDict];
+                            }
+                        }
+                    }
+                    else {
+                        for (NSDictionary *propertyDict in _propertListDataArray) {
+                            if ([[propertyDict valueForKey:@"Property Cost"] doubleValue] >= [_fObject.costMin doubleValue] && [[propertyDict valueForKey:@"Property Cost"] doubleValue] <= [_fObject.costMax doubleValue] ) {
+                                [_propertyListPresentArray addObject:propertyDict];
+                            }
+                        }
+                    }
+                }
                 [self fetchMyFavoriteListFromCoreData];
                 [self.myTableView.tbView reloadData];
             });
@@ -342,8 +512,17 @@
 
 -(NSURLRequest *)getPropertySearchNSURLRequest{
     
+    NSURL *requestURL = [NSURL alloc];
+    
+    if ([_fObject.address length]) {
+        requestURL = [NSURL URLWithString:@"http://www.rjtmobile.com/realestate/getproperty.php?all"];
+    }
+    else {
+        requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.rjtmobile.com/realestate/getproperty.php?psearch&pname=&pptype=%@&ploc=%@&pcatid=%@",_fObject.type,_zipCodeTextField.text,_fObject.category]];
+    }
+    
+    NSLog(@"%@",requestURL);
     // the server url to which the image (or the media) is uploaded. Use your server url here
-    NSURL* requestURL = [NSURL URLWithString:@"http://www.rjtmobile.com/realestate/getproperty.php?psearch&pname=&pptype=&ploc=&pcatid="];
     
     // create request
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];

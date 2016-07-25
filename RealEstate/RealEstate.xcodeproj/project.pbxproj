@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		035695F81D450F2A00F41B1C /* marker.png in Resources */ = {isa = PBXBuildFile; fileRef = 035695F71D450F2A00F41B1C /* marker.png */; };
+		035695FB1D45226F00F41B1C /* DetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 035695FA1D45226F00F41B1C /* DetailsViewController.m */; };
+		03A3F20A1D443BB600E9BB86 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F2091D443BB600E9BB86 /* FilterViewController.m */; };
+		03A3F20C1D4445D100E9BB86 /* filter_confirm.png in Resources */ = {isa = PBXBuildFile; fileRef = 03A3F20B1D4445D100E9BB86 /* filter_confirm.png */; };
+		03A3F2141D444B0900E9BB86 /* filterObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 03A3F2131D444B0900E9BB86 /* filterObject.m */; };
 		03CC4D771D40147200A984DD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC4D761D40147200A984DD /* main.m */; };
 		03CC4D7A1D40147200A984DD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC4D791D40147200A984DD /* AppDelegate.m */; };
 		03CC4D7D1D40147200A984DD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC4D7C1D40147200A984DD /* ViewController.m */; };
@@ -42,6 +47,10 @@
 		03CC4E1B1D428DA200A984DD /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4E1A1D428DA200A984DD /* email.png */; };
 		03CC4E1E1D428F3400A984DD /* signup.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4E1C1D428F3400A984DD /* signup.png */; };
 		03CC4E1F1D428F3400A984DD /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4E1D1D428F3400A984DD /* login.png */; };
+		03CC4E4C1D43D91E00A984DD /* contact_seller.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4E4B1D43D91E00A984DD /* contact_seller.png */; };
+		03CC4E4E1D43DA6B00A984DD /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4E4D1D43DA6B00A984DD /* share.png */; };
+		03CC4E501D43FFE800A984DD /* contact_manager.png in Resources */ = {isa = PBXBuildFile; fileRef = 03CC4E4F1D43FFE800A984DD /* contact_manager.png */; };
+		03CC4E531D44006A00A984DD /* ContactSellerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03CC4E521D44006A00A984DD /* ContactSellerViewController.m */; };
 		3083678F1D415F050024767C /* newPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3083678E1D415F050024767C /* newPostViewController.m */; };
 		3096F4801D4547B200EF0F6A /* house.png in Resources */ = {isa = PBXBuildFile; fileRef = 3096F47F1D4547B200EF0F6A /* house.png */; };
 		30A5F40F1D42C2DA00C330D6 /* typePopoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30A5F40E1D42C2DA00C330D6 /* typePopoverViewController.m */; };
@@ -52,6 +61,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		035695F71D450F2A00F41B1C /* marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker.png; sourceTree = "<group>"; };
+		035695F91D45226F00F41B1C /* DetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailsViewController.h; sourceTree = "<group>"; };
+		035695FA1D45226F00F41B1C /* DetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailsViewController.m; sourceTree = "<group>"; };
+		03A3F2081D443BB600E9BB86 /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
+		03A3F2091D443BB600E9BB86 /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
+		03A3F20B1D4445D100E9BB86 /* filter_confirm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = filter_confirm.png; sourceTree = "<group>"; };
+		03A3F2121D444B0900E9BB86 /* filterObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = filterObject.h; sourceTree = "<group>"; };
+		03A3F2131D444B0900E9BB86 /* filterObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = filterObject.m; sourceTree = "<group>"; };
 		03CC4D721D40147200A984DD /* RealEstate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealEstate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03CC4D761D40147200A984DD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		03CC4D781D40147200A984DD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -101,6 +118,11 @@
 		03CC4E1A1D428DA200A984DD /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email.png; sourceTree = "<group>"; };
 		03CC4E1C1D428F3400A984DD /* signup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = signup.png; sourceTree = "<group>"; };
 		03CC4E1D1D428F3400A984DD /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
+		03CC4E4B1D43D91E00A984DD /* contact_seller.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contact_seller.png; sourceTree = "<group>"; };
+		03CC4E4D1D43DA6B00A984DD /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
+		03CC4E4F1D43FFE800A984DD /* contact_manager.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contact_manager.png; sourceTree = "<group>"; };
+		03CC4E511D44006A00A984DD /* ContactSellerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactSellerViewController.h; sourceTree = "<group>"; };
+		03CC4E521D44006A00A984DD /* ContactSellerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactSellerViewController.m; sourceTree = "<group>"; };
 		3083678D1D415F050024767C /* newPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = newPostViewController.h; sourceTree = "<group>"; };
 		3083678E1D415F050024767C /* newPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = newPostViewController.m; sourceTree = "<group>"; };
 		3096F47F1D4547B200EF0F6A /* house.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = house.png; sourceTree = "<group>"; };
@@ -124,6 +146,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03A3F2071D443AF100E9BB86 /* My Favorite */ = {
+			isa = PBXGroup;
+			children = (
+				03CC4E511D44006A00A984DD /* ContactSellerViewController.h */,
+				03CC4E521D44006A00A984DD /* ContactSellerViewController.m */,
+				03CC4DCE1D41222000A984DD /* MyFavoriteViewController.h */,
+				03CC4DCF1D41222000A984DD /* MyFavoriteViewController.m */,
+				03CC4E071D41D5E900A984DD /* MyFavorCollectionViewCell.h */,
+				03CC4E081D41D5E900A984DD /* MyFavorCollectionViewCell.m */,
+			);
+			name = "My Favorite";
+			sourceTree = "<group>";
+		};
 		03CC4D691D40147200A984DD = {
 			isa = PBXGroup;
 			children = (
@@ -147,13 +182,9 @@
 				03CC4D9F1D4048B400A984DD /* images */,
 				03CC4D781D40147200A984DD /* AppDelegate.h */,
 				03CC4D791D40147200A984DD /* AppDelegate.m */,
-				03CC4DCE1D41222000A984DD /* MyFavoriteViewController.h */,
-				03CC4DCF1D41222000A984DD /* MyFavoriteViewController.m */,
-				03CC4E071D41D5E900A984DD /* MyFavorCollectionViewCell.h */,
-				03CC4E081D41D5E900A984DD /* MyFavorCollectionViewCell.m */,
+				03A3F2071D443AF100E9BB86 /* My Favorite */,
 				03CC4DB41D40748D00A984DD /* HomeViewController */,
 				03CC4D911D402B8700A984DD /* Login + SignUp */,
-				03CC4D901D40148C00A984DD /* Buyer */,
 				03CC4D8F1D40148300A984DD /* Seller */,
 				03CC4D7E1D40147200A984DD /* Main.storyboard */,
 				03CC4D841D40147200A984DD /* Assets.xcassets */,
@@ -186,13 +217,6 @@
 			name = Seller;
 			sourceTree = "<group>";
 		};
-		03CC4D901D40148C00A984DD /* Buyer */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Buyer;
-			sourceTree = "<group>";
-		};
 		03CC4D911D402B8700A984DD /* Login + SignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -207,6 +231,11 @@
 		03CC4D9F1D4048B400A984DD /* images */ = {
 			isa = PBXGroup;
 			children = (
+				035695F71D450F2A00F41B1C /* marker.png */,
+				03A3F20B1D4445D100E9BB86 /* filter_confirm.png */,
+				03CC4E4F1D43FFE800A984DD /* contact_manager.png */,
+				03CC4E4D1D43DA6B00A984DD /* share.png */,
+				03CC4E4B1D43D91E00A984DD /* contact_seller.png */,
 				03CC4E1C1D428F3400A984DD /* signup.png */,
 				03CC4E1D1D428F3400A984DD /* login.png */,
 				03CC4E1A1D428DA200A984DD /* email.png */,
@@ -235,6 +264,12 @@
 			children = (
 				03CC4D951D402C9600A984DD /* HomeViewController.h */,
 				03CC4D961D402C9600A984DD /* HomeViewController.m */,
+				035695F91D45226F00F41B1C /* DetailsViewController.h */,
+				035695FA1D45226F00F41B1C /* DetailsViewController.m */,
+				03A3F2081D443BB600E9BB86 /* FilterViewController.h */,
+				03A3F2091D443BB600E9BB86 /* FilterViewController.m */,
+				03A3F2121D444B0900E9BB86 /* filterObject.h */,
+				03A3F2131D444B0900E9BB86 /* filterObject.m */,
 				03CC4DAA1D406D1400A984DD /* MyMapView.h */,
 				03CC4DAB1D406D1400A984DD /* MyMapView.m */,
 				03CC4DAD1D406D3900A984DD /* MyMapView.xib */,
@@ -321,6 +356,7 @@
 				03CC4D881D40147200A984DD /* LaunchScreen.storyboard in Resources */,
 				03CC4E1F1D428F3400A984DD /* login.png in Resources */,
 				03CC4D851D40147200A984DD /* Assets.xcassets in Resources */,
+				03A3F20C1D4445D100E9BB86 /* filter_confirm.png in Resources */,
 				03CC4E171D428BB000A984DD /* radio_sel.png in Resources */,
 				03CC4E191D428D1B00A984DD /* password.png in Resources */,
 				03CC4DC71D41111E00A984DD /* real_estate.png in Resources */,
@@ -328,21 +364,25 @@
 				30A5F4201D42CE0700C330D6 /* office.png in Resources */,
 				03CC4E0D1D427D4000A984DD /* litle.png in Resources */,
 				03CC4DCC1D411F1900A984DD /* heart.png in Resources */,
+				035695F81D450F2A00F41B1C /* marker.png in Resources */,
 				03CC4DAE1D406D3900A984DD /* MyMapView.xib in Resources */,
 				30A5F41F1D42CE0700C330D6 /* flat.png in Resources */,
 				03CC4DB31D406DE900A984DD /* MyTableView.xib in Resources */,
 				3096F4801D4547B200EF0F6A /* house.png in Resources */,
 				03CC4DB91D40795A00A984DD /* MyTableViewCell.xib in Resources */,
+				03CC4E501D43FFE800A984DD /* contact_manager.png in Resources */,
 				03CC4DC51D41070400A984DD /* sp.jpg in Resources */,
 				03CC4DCD1D411F1900A984DD /* like.png in Resources */,
 				30A5F4231D42CE0700C330D6 /* villa.png in Resources */,
 				03CC4DC91D41187400A984DD /* photo_not_ava.jpg in Resources */,
+				03CC4E4E1D43DA6B00A984DD /* share.png in Resources */,
 				03CC4E1B1D428DA200A984DD /* email.png in Resources */,
 				03CC4E161D428BB000A984DD /* radio_unsel.png in Resources */,
 				30A5F4211D42CE0700C330D6 /* plot.png in Resources */,
 				03CC4D801D40147200A984DD /* Main.storyboard in Resources */,
 				03CC4E0F1D427D5C00A984DD /* water.png in Resources */,
 				03CC4E1E1D428F3400A984DD /* signup.png in Resources */,
+				03CC4E4C1D43D91E00A984DD /* contact_seller.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,7 +394,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				03CC4DD71D41262000A984DD /* Property.m in Sources */,
+				03CC4E531D44006A00A984DD /* ContactSellerViewController.m in Sources */,
 				03CC4D7D1D40147200A984DD /* ViewController.m in Sources */,
+				03A3F2141D444B0900E9BB86 /* filterObject.m in Sources */,
 				30A5F40F1D42C2DA00C330D6 /* typePopoverViewController.m in Sources */,
 				03CC4D941D402BDF00A984DD /* SignUpViewController.m in Sources */,
 				03CC4D9A1D402CCB00A984DD /* MyPostViewController.m in Sources */,
@@ -362,6 +404,8 @@
 				03CC4D831D40147200A984DD /* RealEstate.xcdatamodeld in Sources */,
 				3083678F1D415F050024767C /* newPostViewController.m in Sources */,
 				03CC4D7A1D40147200A984DD /* AppDelegate.m in Sources */,
+				035695FB1D45226F00F41B1C /* DetailsViewController.m in Sources */,
+				03A3F20A1D443BB600E9BB86 /* FilterViewController.m in Sources */,
 				03CC4DAC1D406D1400A984DD /* MyMapView.m in Sources */,
 				03CC4D771D40147200A984DD /* main.m in Sources */,
 				03CC4D971D402C9600A984DD /* HomeViewController.m in Sources */,
