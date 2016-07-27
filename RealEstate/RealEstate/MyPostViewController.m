@@ -108,19 +108,28 @@
 }
 
 - (IBAction)prpCorrectBtn_Tapped:(UIButton *)sender {
-    NSArray *arr = [self.myMap annotations];
-    MKPointAnnotation *annot = [[MKPointAnnotation alloc] init];
-    annot = [arr objectAtIndex:0];
-    NSString *lat = [NSString stringWithFormat:@"%f",annot.coordinate.latitude];
-    NSString *lon = [NSString stringWithFormat:@"%f",annot.coordinate.longitude];
     
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setValue:lat forKey:@"prplat"];
-    [defaults setValue:lon forKey:@"prplon"];
-    newPostViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"newPostViewController"];
-    [controller setCrtPrp:currentPrp];
-    [controller setIsEdit:isEdit];
-    [self presentViewController:controller animated:YES completion:nil];
+    if ([self.addr1TF.text isEqualToString:@""]) {
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Cant submit diet due to unknown error" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
+        [alert addAction:action];
+        [self presentViewController:alert animated:YES completion:nil];
+    }else{
+    
+        NSArray *arr = [self.myMap annotations];
+        MKPointAnnotation *annot = [[MKPointAnnotation alloc] init];
+        annot = [arr objectAtIndex:0];
+        NSString *lat = [NSString stringWithFormat:@"%f",annot.coordinate.latitude];
+        NSString *lon = [NSString stringWithFormat:@"%f",annot.coordinate.longitude];
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue:lat forKey:@"prplat"];
+        [defaults setValue:lon forKey:@"prplon"];
+        newPostViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"newPostViewController"];
+        [controller setCrtPrp:currentPrp];
+        [controller setIsEdit:isEdit];
+        [self presentViewController:controller animated:YES completion:nil];
+    }
     
 }
 
