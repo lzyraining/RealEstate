@@ -336,7 +336,7 @@
 				TargetAttributes = {
 					03CC4D711D40147200A984DD = {
 						CreatedOnToolsVersion = 7.3.1;
-						DevelopmentTeam = L9B63KP94R;
+						DevelopmentTeam = 95ZUT589QC;
 					};
 				};
 			};
@@ -536,13 +536,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: lzyraining@gmail.com (7LAT4LS2PG)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: lzyraining@gmail.com (7LAT4LS2PG)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: kiwishuting@gmail.com (YN2NBU68Q9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = RealEstate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-.RealEstate1";
+				PRODUCT_BUNDLE_IDENTIFIER = "-.RealEstate";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "318cc0ce-ccdd-49d4-a9c2-7586a02d5f99";
+				PROVISIONING_PROFILE = "5489d52d-8b37-4afe-b9ba-dc5b3e97facc";
 			};
 			name = Debug;
 		};
@@ -550,13 +550,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: lzyraining@gmail.com (7LAT4LS2PG)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: lzyraining@gmail.com (7LAT4LS2PG)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: kiwishuting@gmail.com (YN2NBU68Q9)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = RealEstate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "-.RealEstate1";
+				PRODUCT_BUNDLE_IDENTIFIER = "-.RealEstate";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "318cc0ce-ccdd-49d4-a9c2-7586a02d5f99";
+				PROVISIONING_PROFILE = "5489d52d-8b37-4afe-b9ba-dc5b3e97facc";
 			};
 			name = Release;
 		};

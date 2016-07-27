@@ -92,6 +92,15 @@
 
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    [self.prpNameTF resignFirstResponder];
+    [self.prpCostTF resignFirstResponder];
+    [self.prpSizeTF resignFirstResponder];
+    [self.prpDescTView resignFirstResponder];
+    
+}
+
 -(void)chooseImg{
     
     _imgPickr = [[UIImagePickerController alloc]init];
@@ -272,7 +281,14 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [self getRealAddress];
-        
+    
+//    if ([self.prpNameTF.text isEqualToString:@""]) {
+//        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Please enter your property name." preferredStyle:UIAlertControllerStyleAlert];
+//        UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:<#^(UIAlertAction * _Nonnull action)handler#>];
+//        [alert addAction:action];
+//        [self presentViewController:alert animated:YES completion:nil];
+//    }
+    
     NSMutableDictionary* _params = [[NSMutableDictionary alloc] init];
     [_params setObject:self.prpNameTF.text forKey:@"propertyname"];
     [_params setObject:self.prpTypeLbl.text forKey:@"propertytype"];
@@ -284,7 +300,7 @@
     [_params setObject:[defaults objectForKey:@"zipcode"] forKey:@"propertyzip"];
     [_params setObject:[defaults objectForKey:@"prplat"] forKey:@"propertylat"];
     [_params setObject:[defaults objectForKey:@"prplon"] forKey:@"propertylong"];
-    [_params setObject:[defaults objectForKey:@"prpDesc"] forKey:@"propertydesc"];
+    [_params setObject:self.prpDescTView.text forKey:@"propertydesc"];
     [_params setObject:@"yes" forKey:@"propertystatus"];
     [_params setObject:[defaults objectForKey:@"kUid"] forKey:@"userid"];
 

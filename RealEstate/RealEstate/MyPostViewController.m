@@ -114,7 +114,7 @@
 - (IBAction)prpCorrectBtn_Tapped:(UIButton *)sender {
     
     if ([self.addr1TF.text isEqualToString:@""]) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Cant submit diet due to unknown error" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Please choose your property location." preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil];
         [alert addAction:action];
         [self presentViewController:alert animated:YES completion:nil];
@@ -136,6 +136,14 @@
         [controller setIsEdit:isEdit];
         [self presentViewController:controller animated:YES completion:nil];
     }
+    
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    [self.addr1TF resignFirstResponder];
+    [self.stateTF resignFirstResponder];
+    [self.zipTF resignFirstResponder];
     
 }
 

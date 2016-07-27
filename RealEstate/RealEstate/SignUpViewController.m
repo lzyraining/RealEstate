@@ -86,7 +86,7 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField{
 
     if (textField == _addr1TF || textField == _addr2TF || textField == _mobileTF) {
-        [self animatedTextField:textField UP:YES withDIS:50];
+        [self animatedTextField:textField UP:YES withDIS:80];
     }else if (textField == _addr2TF){
         [self animatedTextField:textField UP:YES withDIS:60];
     }else if (textField == _mobileTF){
