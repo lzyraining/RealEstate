@@ -235,6 +235,7 @@
                         }];
                         [alert addAction:action];
                         [self presentViewController:alert animated:YES completion:nil];
+                        
 
                     }else{
                         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Congrats" message:@"This property has added to your list!" preferredStyle:UIAlertControllerStyleAlert];
@@ -277,7 +278,7 @@
     [_params setObject:self.prpTypeLbl.text forKey:@"propertytype"];
     [_params setObject:[defaults objectForKey:@"prpCat"] forKey:@"propertycat"];
     [_params setObject:[defaults objectForKey:@"addr1"] forKey:@"propertyaddress1"];
-    [_params setObject:[NSString stringWithFormat:@"addr2"] forKey:@"propertyaddress2"];
+    [_params setObject:[NSString stringWithFormat:@"%@",[defaults valueForKey:@"prpstate"]] forKey:@"propertyaddress2"];
     [_params setObject:self.prpCostTF.text forKey:@"propertycost"];
     [_params setObject:self.prpSizeTF.text forKey:@"propertysize"];
     [_params setObject:[defaults objectForKey:@"zipcode"] forKey:@"propertyzip"];
@@ -387,9 +388,9 @@
         self.unitLbl.text = @"$/mo";
     }
     if (_rentBtn_Outlet.selected == YES) {
-        [defaults setValue:@"2" forKey:@"prpCat"];
-    }else{
         [defaults setValue:@"1" forKey:@"prpCat"];
+    }else{
+        [defaults setValue:@"2" forKey:@"prpCat"];
     }
     
 }

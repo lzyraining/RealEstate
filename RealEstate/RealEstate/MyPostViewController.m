@@ -21,7 +21,6 @@
 - (IBAction)prpCorrectBtn_Tapped:(UIButton *)sender;
 - (IBAction)srchBtn_Tapped:(UIButton *)sender;
 @property (weak, nonatomic) IBOutlet UITextField *addr1TF;
-@property (weak, nonatomic) IBOutlet UITextField *suitTF;
 @property (weak, nonatomic) IBOutlet UITextField *stateTF;
 @property (weak, nonatomic) IBOutlet UITextField *zipTF;
 @property (weak, nonatomic) IBOutlet MKMapView *myMap;
@@ -43,7 +42,12 @@
     lpgr.minimumPressDuration = 0.5; //user needs to press for 2 seconds
     [self.myMap addGestureRecognizer:lpgr];
     if (currentPrp) {
+        addr = [NSString stringWithFormat:@"%@,%@",[currentPrp valueForKey:@"Property Address1"],[currentPrp valueForKey:@"Property Address2"]];
+        [self reverseAddressGeocoder:addr];
         self.addr1TF.text = [currentPrp valueForKey:@"Property Address1"];
+        self.stateTF.text = [currentPrp valueForKey:@"Property Address2"];
+        self.zipTF.text = [currentPrp valueForKey:@"Property Zip"];
+        
     }
     self.srchBtn_outlet.layer.cornerRadius = 10.0;
     self.corrctBtn_Outlet.layer.cornerRadius = 10.0;
@@ -125,6 +129,8 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setValue:lat forKey:@"prplat"];
         [defaults setValue:lon forKey:@"prplon"];
+        [defaults setValue:self.stateTF.text forKey:@"prpstate"];
+        [defaults setValue:self.zipTF.text forKey:@"prpZip"];
         newPostViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"newPostViewController"];
         [controller setCrtPrp:currentPrp];
         [controller setIsEdit:isEdit];
@@ -135,7 +141,7 @@
 
 - (IBAction)srchBtn_Tapped:(UIButton *)sender {
     
-    addr = [NSString stringWithFormat:@"%@,%@,%@,%@",self.addr1TF.text,self.suitTF.text,self.stateTF.text,self.zipTF.text];
+    addr = [NSString stringWithFormat:@"%@,%@,%@",self.addr1TF.text,self.stateTF.text,self.zipTF.text];
     [self reverseAddressGeocoder:addr];
     
 }

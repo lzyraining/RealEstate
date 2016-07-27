@@ -50,19 +50,19 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     switch (sender.tag) {
         case 101:
-            [defaults setValue:@"plot" forKey:@"prpType"];
+            [defaults setValue:@"Plot" forKey:@"prpType"];
             break;
         case 102:
-            [defaults setValue:@"villa" forKey:@"prpType"];
+            [defaults setValue:@"Villa" forKey:@"prpType"];
             break;
         case 103:
-            [defaults setValue:@"flat" forKey:@"prpType"];
+            [defaults setValue:@"Flat" forKey:@"prpType"];
             break;
         case 104:
-            [defaults setValue:@"office" forKey:@"prpType"];
+            [defaults setValue:@"Offices" forKey:@"prpType"];
             break;
         case 105:
-            [defaults setValue:@"house" forKey:@"prpType"];
+            [defaults setValue:@"House" forKey:@"prpType"];
             break;
         default:
             break;

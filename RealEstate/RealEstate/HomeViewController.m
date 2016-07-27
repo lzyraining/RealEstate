@@ -219,9 +219,7 @@
 
 -(void)submitFilterContidiotn {
     [self callPropertySearchApi];
-    if(self.myMapView) {
-        [self showPropertyInMap];
-    }
+    [self showPropertyInMap];
 }
 
 
