@@ -70,9 +70,12 @@
         if ([crtImgStr isEqualToString:@""]) {
             self.prpImgView.image = [UIImage imageNamed:@"photo_not_ava.jpg"];
         }else{
-            NSURL *crtUrl = [NSURL URLWithString:crtImgStr];
-            NSData *crtData = [NSData dataWithContentsOfURL:crtUrl];
-            self.prpImgView.image = [UIImage imageWithData:crtData];
+            NSString *str = @"";
+            str = [crtImgStr stringByReplacingOccurrencesOfString:@"\\"                                                withString:@"/"];
+            NSString *string = [NSString stringWithFormat:@"http://%@",str];
+            NSURL *imgUrl = [NSURL URLWithString:string];
+            NSData *data = [NSData dataWithContentsOfURL:imgUrl];
+            self.prpImgView.image = [UIImage imageWithData:data];
         }
     }
     [self getRealAddress];
@@ -281,13 +284,6 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [self getRealAddress];
-    
-//    if ([self.prpNameTF.text isEqualToString:@""]) {
-//        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Alert" message:@"Please enter your property name." preferredStyle:UIAlertControllerStyleAlert];
-//        UIAlertAction *action = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:<#^(UIAlertAction * _Nonnull action)handler#>];
-//        [alert addAction:action];
-//        [self presentViewController:alert animated:YES completion:nil];
-//    }
     
     NSMutableDictionary* _params = [[NSMutableDictionary alloc] init];
     [_params setObject:self.prpNameTF.text forKey:@"propertyname"];
