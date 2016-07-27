@@ -34,6 +34,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *emailAlertLbl;
 @property (weak, nonatomic) IBOutlet UILabel *pswdAlertLbl;
 @property (weak, nonatomic) IBOutlet UILabel *rePswdAlertLbl;
+- (IBAction)canclBtnTapped:(UIButton *)sender;
+- (IBAction)userTypeBtn_Tapped:(UIButton *)sender;
+@property (weak, nonatomic) IBOutlet UIButton *sellType_outlet;
+@property (weak, nonatomic) IBOutlet UIButton *buyerType_Outlet;
 
 @end
 
@@ -362,4 +366,27 @@
 
 
 
+- (IBAction)canclBtnTapped:(UIButton *)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+}
+
+- (IBAction)userTypeBtn_Tapped:(UIButton *)sender {
+    
+    if (sender.tag == 101) {
+        _buyerType_Outlet.selected = NO;
+        _sellType_outlet.selected = YES;
+    }else{
+        _buyerType_Outlet.selected = YES;
+        _sellType_outlet.selected = NO;
+    }
+    if (_sellType_outlet.selected == YES) {
+        userType = @"seller";
+    }else{
+        userType = @"buyer";
+    }
+
+    
+}
 @end

@@ -1473,12 +1473,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Get your property ready to go" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f3q-aC-7eb">
-                                <rect key="frame" x="20" y="71" width="229" height="21"/>
-                                <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="User name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xhC-VB-xc0">
                                 <rect key="frame" x="20" y="115" width="335" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1558,6 +1552,9 @@
                                 <state key="normal" title="Cancel">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="canclBtnTapped:" destination="YDI-Bv-Mrc" eventType="touchUpInside" id="Cz3-S1-Cex"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Required field" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t86-Gu-8RO">
                                 <rect key="frame" x="31" y="146" width="172" height="15"/>
@@ -1602,7 +1599,7 @@
                                             </barButtonItem>
                                         </items>
                                     </toolbar>
-                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="XyS-cZ-iaG">
+                                    <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="XyS-cZ-iaG">
                                         <rect key="frame" x="0.0" y="44" width="375" height="216"/>
                                         <date key="date" timeIntervalSinceReferenceDate="490769894.55599701">
                                             <!--2016-07-21 04:58:14 +0000-->
@@ -1614,6 +1611,40 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <button opaque="NO" tag="101" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0y-sG-mPS">
+                                <rect key="frame" x="76" y="77" width="30" height="27"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" backgroundImage="radio_unsel.png"/>
+                                <state key="selected" backgroundImage="radio_sel.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="userTypeBtn_Tapped:" destination="YDI-Bv-Mrc" eventType="touchUpInside" id="wbw-3H-mPI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="102" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Ve-IR-cUE">
+                                <rect key="frame" x="201" y="77" width="30" height="28"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" backgroundImage="radio_unsel.png"/>
+                                <state key="selected" backgroundImage="radio_sel.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="userTypeBtn_Tapped:" destination="YDI-Bv-Mrc" eventType="touchUpInside" id="HpH-zY-5NI"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seller" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSW-n7-XwK">
+                                <rect key="frame" x="114" y="80" width="55" height="21"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                <color key="textColor" red="0.4431372549" green="0.85098039219999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Buyer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ndM-tb-VYt">
+                                <rect key="frame" x="239" y="80" width="46" height="21"/>
+                                <fontDescription key="fontDescription" name="ChalkboardSE-Regular" family="Chalkboard SE" pointSize="17"/>
+                                <color key="textColor" red="0.4431372549" green="0.85098039219999999" blue="0.71372549019999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -1621,6 +1652,7 @@
                     <connections>
                         <outlet property="addr1TF" destination="qIc-wr-VMr" id="CuK-LB-8QK"/>
                         <outlet property="addr2TF" destination="6ug-op-pCb" id="HMt-Dd-wK6"/>
+                        <outlet property="buyerType_Outlet" destination="3Ve-IR-cUE" id="RRA-S2-NOh"/>
                         <outlet property="datePickrToolBar" destination="Hhh-Oo-4Hq" id="OQK-LY-kf1"/>
                         <outlet property="datePickr_outlet" destination="XyS-cZ-iaG" id="7tR-jv-3XB"/>
                         <outlet property="dobSubView" destination="pAl-op-opr" id="E4r-jW-BDk"/>
@@ -1632,6 +1664,7 @@
                         <outlet property="pswdTF" destination="JyR-wr-nRQ" id="mNm-aM-D9N"/>
                         <outlet property="rePswdAlertLbl" destination="ttI-Ig-7MK" id="Y1V-wO-yQy"/>
                         <outlet property="rePswdTF" destination="LGt-QO-ZPB" id="DJR-Ip-gVg"/>
+                        <outlet property="sellType_outlet" destination="m0y-sG-mPS" id="Enk-Uy-vcp"/>
                         <outlet property="submitBtn_outlet" destination="rs9-QC-XJQ" id="86p-8x-B94"/>
                         <outlet property="userNameAlertLbl" destination="t86-Gu-8RO" id="qCU-ud-fPO"/>
                         <outlet property="userNameTF" destination="xhC-VB-xc0" id="58f-ZT-X77"/>
