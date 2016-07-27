@@ -87,11 +87,15 @@
         cell.costLbl.text = [NSString stringWithFormat:@"$%@/mo",[currentPrp valueForKey:@"Property Cost"]];
     }
     cell.addDateLbl.text = [currentPrp valueForKey:@"Property Published Date"];
-    NSString *imgurl = [currentPrp valueForKey:@"Property Image 1"];
+    NSString *imgurl = [NSString stringWithFormat:@"http://%@",[currentPrp valueForKey:@"Property Image 1"]];
     NSURL *url = [NSURL URLWithString:imgurl];
     NSData *data = [NSData dataWithContentsOfURL:url];
-    cell.imgView.image = [UIImage imageWithData:data];
-    prpid = [currentPrp valueForKey:@""];
+    if ([imgurl isEqualToString:@""]) {
+        cell.imgView.image = [UIImage imageNamed:@"photo_not_ava.jpg"];
+    }else{
+        cell.imgView.image = [UIImage imageWithData:data];
+        prpid = [currentPrp valueForKey:@""];
+    }
     
     return cell;
     

@@ -122,8 +122,8 @@
     self.imgChosenLbl.text = [NSString stringWithFormat:@"%d Image Selected", imgCount+1];
     imgCount = imgCount + 1;
     [self dismissViewControllerAnimated:YES completion:nil];
-    NSData *imageData = UIImageJPEGRepresentation(_prpImgView.image, 1.0);
-    [imgDataArr addObject:imageData];
+//    NSData *imageData = UIImageJPEGRepresentation(_prpImgView.image, 1.0);
+    //[imgDataArr addObject:imageData];
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
@@ -292,7 +292,8 @@
     NSString *BoundaryConstant = @"----------V2ymHFg03ehbqgZCaKO6jy";
     
     // string constant for the post parameter 'file'. My server uses this name: `file`. Your's may differ
-    NSString* FileParamConstant = @"realestate";
+//    NSArray *fileParamConst = @[@"Property Image 1",@"Property Image 2",@"Property Image 3"];
+    NSString* FileParamConstant = @"propertyimg1";
     
     if (isEdit == YES) {
         requestURL = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.rjtmobile.com/realestate/register.php?property&edit&pptyid=%@",[crtPrp valueForKey:@"Property Id"]]];
@@ -322,18 +323,19 @@
     }
     
     // add image data
-    for (int i=0; i<imgDataArr.count; i++) {
-        if (imgDataArr) {
+    //for (int i=0; i<imgDataArr.count; i++) {
+    //    if (imgDataArr) {
             [body appendData:[[NSString stringWithFormat:@"--%@\r\n", BoundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
-            [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"prpimg%d.jpg\"\r\n", FileParamConstant,i] dataUsingEncoding:NSUTF8StringEncoding]];
+            [body appendData:[[NSString stringWithFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"prpimg1.jpg\"\r\n", FileParamConstant] dataUsingEncoding:NSUTF8StringEncoding]];
             [body appendData:[@"Content-Type: image/jpeg\r\n\r\n" dataUsingEncoding:NSUTF8StringEncoding]];
-            [body appendData:[imgDataArr objectAtIndex:i]];
+            NSData *imageData = UIImageJPEGRepresentation(_prpImgView.image, 1.0);
+            [body appendData:imageData];
             [body appendData:[[NSString stringWithFormat:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-        }
+      //  }
         
         [body appendData:[[NSString stringWithFormat:@"--%@--\r\n", BoundaryConstant] dataUsingEncoding:NSUTF8StringEncoding]];
 
-    }
+   // }
     
     // setting the body of the post to the reqeust
     [request setHTTPBody:body];
