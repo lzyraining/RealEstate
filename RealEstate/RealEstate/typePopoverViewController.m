@@ -15,11 +15,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *house_outlet;
 @property (weak, nonatomic) IBOutlet UIButton *office_outlet;
 @property (weak, nonatomic) IBOutlet UIButton *villa_outlet;
-- (IBAction)plot_Tapped:(UIButton *)sender;
-- (IBAction)flat_Tapped:(UIButton *)sender;
-- (IBAction)house_Tapped:(UIButton *)sender;
-- (IBAction)office_Tapped:(UIButton *)sender;
-- (IBAction)villa_Tapped:(UIButton *)sender;
+- (IBAction)prpTypeBtn_Tapped:(UIButton *)sender;
+
+- (IBAction)doneBtn_Tapped:(UIButton *)sender;
 
 @end
 
@@ -45,44 +43,37 @@
 }
 */
 
-- (IBAction)plot_Tapped:(UIButton *)sender {
+
+
+- (IBAction)prpTypeBtn_Tapped:(UIButton *)sender {
     
-    [self dismissViewControllerAnimated:YES completion:^{
-        newPostViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"newPostViewController"];
-        [controller setPrpType:@"Plot"];
-    }];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    switch (sender.tag) {
+        case 101:
+            [defaults setValue:@"plot" forKey:@"prpType"];
+            break;
+        case 102:
+            [defaults setValue:@"villa" forKey:@"prpType"];
+            break;
+        case 103:
+            [defaults setValue:@"flat" forKey:@"prpType"];
+            break;
+        case 104:
+            [defaults setValue:@"office" forKey:@"prpType"];
+            break;
+        case 105:
+            [defaults setValue:@"house" forKey:@"prpType"];
+            break;
+        default:
+            break;
+    }
+    if ([self protocol]) {
+        [self.protocol setPrpType:[defaults valueForKey:@"prpType"]];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    
 }
 
-- (IBAction)flat_Tapped:(UIButton *)sender {
-    
-    [self dismissViewControllerAnimated:YES completion:^{
-        newPostViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"newPostViewController"];
-        [controller setPrpType:@"Flat"];
-    }];
+- (IBAction)doneBtn_Tapped:(UIButton *)sender {
 }
-
-- (IBAction)house_Tapped:(UIButton *)sender {
-    
-    [self dismissViewControllerAnimated:YES completion:^{
-        newPostViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"newPostViewController"];
-        [controller setPrpType:@"House"];
-    }];
-}
-
-- (IBAction)office_Tapped:(UIButton *)sender {
-    
-    [self dismissViewControllerAnimated:YES completion:^{
-        newPostViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"newPostViewController"];
-        [controller setPrpType:@"Office"];
-    }];
-}
-
-- (IBAction)villa_Tapped:(UIButton *)sender {
-    
-    [self dismissViewControllerAnimated:YES completion:^{
-        newPostViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"newPostViewController"];
-        [controller setPrpType:@"Villa"];
-    }];
-}
-
 @end

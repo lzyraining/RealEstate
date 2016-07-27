@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <MapKit/MapKit.h>
 
-@interface MyPostViewController : UIViewController
+
+@interface MyPostViewController : UIViewController <UIGestureRecognizerDelegate,MKAnnotation,MKMapViewDelegate,CLLocationManagerDelegate>
+
+@property(nonatomic, retain) CLLocationManager *locationManager;
+@property(nonatomic, strong) NSMutableDictionary* currentPrp;
+@property BOOL isEdit;
 
 @end

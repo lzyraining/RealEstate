@@ -58,6 +58,8 @@
 		30A5F4201D42CE0700C330D6 /* office.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A5F41B1D42CE0700C330D6 /* office.png */; };
 		30A5F4211D42CE0700C330D6 /* plot.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A5F41C1D42CE0700C330D6 /* plot.png */; };
 		30A5F4231D42CE0700C330D6 /* villa.png in Resources */ = {isa = PBXBuildFile; fileRef = 30A5F41E1D42CE0700C330D6 /* villa.png */; };
+		30D252E51D4873C6001FB7EA /* postListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D252E41D4873C6001FB7EA /* postListViewController.m */; };
+		30D252E81D487AC7001FB7EA /* CustListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 30D252E71D487AC7001FB7EA /* CustListTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -132,6 +134,10 @@
 		30A5F41B1D42CE0700C330D6 /* office.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = office.png; sourceTree = "<group>"; };
 		30A5F41C1D42CE0700C330D6 /* plot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plot.png; sourceTree = "<group>"; };
 		30A5F41E1D42CE0700C330D6 /* villa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = villa.png; sourceTree = "<group>"; };
+		30D252E31D4873C6001FB7EA /* postListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = postListViewController.h; sourceTree = "<group>"; };
+		30D252E41D4873C6001FB7EA /* postListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = postListViewController.m; sourceTree = "<group>"; };
+		30D252E61D487AC7001FB7EA /* CustListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustListTableViewCell.h; sourceTree = "<group>"; };
+		30D252E71D487AC7001FB7EA /* CustListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustListTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +213,10 @@
 		03CC4D8F1D40148300A984DD /* Seller */ = {
 			isa = PBXGroup;
 			children = (
+				30D252E31D4873C6001FB7EA /* postListViewController.h */,
+				30D252E41D4873C6001FB7EA /* postListViewController.m */,
+				30D252E61D487AC7001FB7EA /* CustListTableViewCell.h */,
+				30D252E71D487AC7001FB7EA /* CustListTableViewCell.m */,
 				3083678D1D415F050024767C /* newPostViewController.h */,
 				3083678E1D415F050024767C /* newPostViewController.m */,
 				03CC4D981D402CCB00A984DD /* MyPostViewController.h */,
@@ -399,6 +409,7 @@
 				03A3F2141D444B0900E9BB86 /* filterObject.m in Sources */,
 				30A5F40F1D42C2DA00C330D6 /* typePopoverViewController.m in Sources */,
 				03CC4D941D402BDF00A984DD /* SignUpViewController.m in Sources */,
+				30D252E81D487AC7001FB7EA /* CustListTableViewCell.m in Sources */,
 				03CC4D9A1D402CCB00A984DD /* MyPostViewController.m in Sources */,
 				03CC4E091D41D5E900A984DD /* MyFavorCollectionViewCell.m in Sources */,
 				03CC4D831D40147200A984DD /* RealEstate.xcdatamodeld in Sources */,
@@ -412,6 +423,7 @@
 				03CC4DD01D41222000A984DD /* MyFavoriteViewController.m in Sources */,
 				03CC4DB11D406DB400A984DD /* MyTableView.m in Sources */,
 				03CC4E041D419F8200A984DD /* Property+CoreDataProperties.m in Sources */,
+				30D252E51D4873C6001FB7EA /* postListViewController.m in Sources */,
 				03CC4DB81D40795A00A984DD /* MyTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

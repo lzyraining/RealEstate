@@ -7,9 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import "typePopoverViewController.h"
 
-@interface newPostViewController : UIViewController <UIImagePickerControllerDelegate,UINavigationControllerDelegate>
+
+@interface newPostViewController : UIViewController <UIImagePickerControllerDelegate,UINavigationControllerDelegate,CLLocationManagerDelegate,myProtocol>
 
 @property (nonatomic, strong) NSString *prpType;
+@property (nonatomic, strong) NSMutableDictionary *crtPrp;
+@property BOOL isEdit;
 
 @end

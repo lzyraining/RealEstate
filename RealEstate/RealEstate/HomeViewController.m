@@ -14,6 +14,7 @@
 #import "FilterViewController.h"
 #import "filterObject.h"
 #import "DetailsViewController.h"
+#import "postListViewController.h"
 
 @interface HomeViewController () <UIPopoverPresentationControllerDelegate, filterObjectProtocol>
 
@@ -137,7 +138,7 @@
 */
 
 - (IBAction)myPostBtn_tapped:(id)sender {
-    MyPostViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"MyPostViewController"];
+    MyPostViewController *controller = [self.storyboard instantiateViewControllerWithIdentifier:@"postListViewController"];
     [self.navigationController pushViewController:controller animated:YES];
 }
 

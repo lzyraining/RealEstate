@@ -89,13 +89,26 @@
         [self animatedTextField:textField UP:YES withDIS:40];
     }
     if (textField == _dobTF) {
-        [self.dobSubView setHidden:NO];
         [textField resignFirstResponder];
+        [self.dobSubView setHidden:NO];
+        
     }else{
         [self.dobSubView setHidden:YES];
     }
     
 };           // became first responder
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    
+    [self.userNameTF resignFirstResponder];
+    [self.emailTF resignFirstResponder];
+    [self.pswdTF resignFirstResponder];
+    [self.rePswdTF resignFirstResponder];
+    [self.mobileTF resignFirstResponder];
+    [self.addr1TF resignFirstResponder];
+    [self.addr2TF resignFirstResponder];
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

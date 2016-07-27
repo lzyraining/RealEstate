@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@protocol myProtocol<NSObject>
 
+-(void)setPrpType:(NSString *)type;
+
+@end
 @interface typePopoverViewController : UIViewController
+@property(nonatomic,assign)id<myProtocol>protocol;
+
 
 @end
