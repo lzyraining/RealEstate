@@ -168,7 +168,7 @@
                             [self.myTableView removeFromSuperview];
                             [self.presentView addSubview:self.myMapView];
                         } completion:^(BOOL finished) {
-                            [self showPropertyInMap];
+                            [self callPropertySearchApi];
                         }];
         
     }
@@ -219,7 +219,7 @@
 
 -(void)submitFilterContidiotn {
     [self callPropertySearchApi];
-    [self showPropertyInMap];
+    
 }
 
 
@@ -448,9 +448,9 @@
     
     [self reverseGeoCoder:textField.text];
     [self callPropertySearchApi];
-    if (self.myMapView) {
-        [self showPropertyInMap];
-    }
+//    if (self.myMapView) {
+//        [self showPropertyInMap];
+//    }
     [textField resignFirstResponder];
     return YES;
 }// called when 'return' key pressed. return NO to ignore.
@@ -505,6 +505,7 @@
                 }
                 [self fetchMyFavoriteListFromCoreData];
                 [self.myTableView.tbView reloadData];
+                [self showPropertyInMap];
             });
         }
     }] resume];
