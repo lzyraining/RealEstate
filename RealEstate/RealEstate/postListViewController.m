@@ -73,7 +73,7 @@
     
     static NSString *cellIdentifier = @"ListCell";
     CustListTableViewCell *cell = [_postListTBView dequeueReusableCellWithIdentifier:cellIdentifier];
-    NSObject *currentPrp = [resultArr objectAtIndex:indexPath.row];
+    NSDictionary *currentPrp = [resultArr objectAtIndex:indexPath.row];
     cell.editLbl.layer.cornerRadius = 10.0;
     cell.swipeLbl.layer.cornerRadius = 10.0;
     cell.addr1Lbl.text = [currentPrp valueForKey:@"Property Address1"];
@@ -87,15 +87,24 @@
         cell.costLbl.text = [NSString stringWithFormat:@"$%@/mo",[currentPrp valueForKey:@"Property Cost"]];
     }
     cell.addDateLbl.text = [currentPrp valueForKey:@"Property Published Date"];
-    NSString *imgurl = [NSString stringWithFormat:@"http://%@",[currentPrp valueForKey:@"Property Image 1"]];
-    NSURL *url = [NSURL URLWithString:imgurl];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    if ([imgurl isEqualToString:@""]) {
-        cell.imgView.image = [UIImage imageNamed:@"photo_not_ava.jpg"];
-    }else{
-        cell.imgView.image = [UIImage imageWithData:data];
-        prpid = [currentPrp valueForKey:@""];
-    }
+    
+    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0);
+    dispatch_sync(queue, ^{
+        NSString *img = [currentPrp valueForKey:@"Property Image 1"];
+        NSString *str = @"";
+        str = [img stringByReplacingOccurrencesOfString:@"\\"                                                withString:@"/"];
+        NSString *string = [NSString stringWithFormat:@"http://%@",str];
+        NSURL *imgUrl = [NSURL URLWithString:string];
+        NSData *data = [NSData dataWithContentsOfURL:imgUrl];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            cell.imgView.image = [UIImage imageWithData:data];
+            if (cell.imgView.image == nil) {
+                cell.imgView.image = [UIImage imageNamed:@"photo_not_ava.jpg"];
+            }
+        });
+    });
+    prpid = [currentPrp valueForKey:@""];
+
     
     return cell;
     

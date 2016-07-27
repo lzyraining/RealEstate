@@ -56,9 +56,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    _propertListDataArray = [[NSArray alloc] init];
-    _propertyListPresentArray = [[NSMutableArray alloc] init];
-    _myFavoriteArray = [[NSMutableArray alloc] init];
+    
 
     _appdelegate = (AppDelegate*)[UIApplication sharedApplication].delegate;
     
@@ -97,6 +95,9 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    _propertListDataArray = [[NSArray alloc] init];
+    _propertyListPresentArray = [[NSMutableArray alloc] init];
+    _myFavoriteArray = [[NSMutableArray alloc] init];
     [self callPropertySearchApi];
     [self fetchMyFavoriteListFromCoreData];
     [self.myTableView.tbView reloadData];
